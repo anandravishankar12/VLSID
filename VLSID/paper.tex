@@ -5,7 +5,10 @@
 \usepackage{amsmath,amssymb,amsfonts}
 \usepackage{algorithmic}
 \usepackage{graphicx}
+\usepackage{amssymb}
 \usepackage{textcomp}
+\usepackage{amsmath}% http://ctan.org/pkg/amsmath
+\newcommand\sufr[3][0pt]{$\rule{0pt}{\dimexpr#1+1.4ex\relax}^\frac{#2}{#3}$}
 \usepackage{xcolor}
 \def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
     T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
@@ -96,13 +99,86 @@ In this algorithm, the MOOP is decomposed into multiple singular problems and ea
 
 \begin{equation}
 \label{eqn:2}
-Maximize/Minimize:F\textsubscript{m}(x) =  \sum_{m=1}^{M}w\textsubscript{m}f\textsubscript{m}(x)
+Optimize:F\textsubscript{m}(x) =  \sum_{m=1}^{M}w\textsubscript{m}f\textsubscript{m}(x)
 \end{equation}
 
+\begin{itemize}
+\item Advantages:
+\begin{enumerate}
+\item Simple and intuitive
+\end{enumerate}
+\item Disadvantages:
+\begin{enumerate}
+\item Required conversion of minmax problems into 1 type
+\item Difficulity in proper weight vector setting
+\end{enumerate}
+\end{itemize}
+
+\item Weighted Metric Method:
+
+This technique is a general extension of weighting sum method with a varient of combination of multiple objectives. Equation $\ref{eqn:3}$ represents this method where $\textit{l\textsubscript{p}}$ is the distance measure between candidate solution $\textit{x}$ and solution $\textit{z\textsuperscript{*}}$, parameter $\textit{p} \in [1,\infty]$. For $\textit{p}$ = 1, weighted metric decomposes into weighting sum method.
+
+\begin{equation}
+\label{eqn:3}
+Optimize:l\textsubscript{p}(x) =  (\sum_{m=1}^{M}w\textsubscript{m}|f\textsubscript{m}(x) - z\textsubscript{m}\textsuperscript{*}|\textsuperscript{p})\textsuperscript{\sufr{1}{p}}
+\end{equation}
+
+\begin{itemize}
+\item Advantages:
+\begin{enumerate}
+\item Simple yet generic distance metric
+\end{enumerate}
+\item Disadvantages:
+\begin{enumerate}
+\item Prerequistive knowledge of individual minima and maxima of each function is required
+\end{enumerate}
+\end{itemize}
+
+\item Value Function Method:
+
+In this method, the user must provide a value mapping function $\mathbb{U}:\mathbb{R\textsuperscript{M}} \rightarrow \mathbb{R}$ for all $\textit{M}$ functions. The optimization process is then reduced to Equation $\ref{eqn:4}$, subject to the same constraints as Equation $\ref{eqn:1}$
+
+\begin{equation}
+\label{eqn:4}
+Optimize: \mathbb{U}(f(x))
+\end{equation}
+
+\begin{itemize}
+\item Advantages:
+\begin{enumerate}
+\item Ideal when prior information is available
+\end{enumerate}
+\item Disadvantages:
+\begin{enumerate}
+\item Problem of over-simplified value mapping function
+\end{enumerate}
+\end{itemize}
+
+% This algorithm is one of the simplest way to solve a MOOP due to the intuitive nature, ease of use and elementary mathematical representation. However, there are a number of drawbacks associated with this algorithm such as unreliable mapping leading to difficulties in proper weight configuration and requirment of converting all minimization and maximization problems into 1 common type. 
 
 \end{itemize}
 
+Solving MOOPs using classical methods requires either prior information about the subproblems or assumptions for decomposition. These algorihtms have been put to use in multiple practical applications involving huge sets of internal parameters, which incur an overhead of optimal configuration setting. 
 
+\section{Modern Techniques for solving MOOPs}
+
+In this section, we provide a brief overview of modern techniques which provide a computationally cheaper substitute to classical computation for finding solutions in artificial landscapes.
+
+\subsection{Quantified problems in Classical Computation}
+
+The algorithms described in the preceeding section can be classified as either direct search or gradient based search techniques. Direct search algorithms user described constriants are utilized in their raw format to guide the solution. Gradient based search techniques use derivatives of the objective function and constraints to guide the solution. However, both these techniques encouter similar problems as described:
+
+\begin{itemize}
+\item Result is dependent on selection of initial state 
+\item Tendency to get stuck in local optima
+\item Lack of genralization due to dependence on problem statement
+\item Requirement of mathemtical representation 
+\item Inefficient when it comes to non-differentiable or discontinous problems
+\item Lack of parallelization in majority of the algorithms
+\item Time incurred is high due to single search guidance system
+\end{itemize}
+
+These problems resulted in the development of new fields in Computational Intelligence, namely Evolutionary Algorithms and Swarm Intelligence. The main motivation for the development of these algorithms is to alleviate the hurdles faced by classical algorithms. 
 
 % This document is a model and instructions for \LaTeX.
 % Please observe the conference page limits. 
