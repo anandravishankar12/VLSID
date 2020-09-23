@@ -6,6 +6,7 @@
 \usepackage{algorithmic}
 \usepackage{graphicx}
 \usepackage{amssymb}
+\usepackage{algorithm}
 \usepackage{textcomp}
 \usepackage{amsmath}% http://ctan.org/pkg/amsmath
 \newcommand\sufr[3][0pt]{$\rule{0pt}{\dimexpr#1+1.4ex\relax}^\frac{#2}{#3}$}
@@ -178,8 +179,72 @@ The algorithms described in the preceeding section can be classified as either d
 \item Time incurred is high due to single search guidance system
 \end{itemize}
 
-These problems resulted in the development of new fields in Computational Intelligence, namely Evolutionary Algorithms and Swarm Intelligence. The main motivation for the development of these algorithms is to alleviate the hurdles faced by classical algorithms. 
+These problems resulted in the development of new fields in Computational Intelligence, namely Evolutionary Algorithms (EA) and Swarm Intelligence (SI). The main motivation for the development of these algorithms is to alleviate the hurdles faced by classical algorithms. 
 
+\subsection{Swarm Intelligence to the Rescue}
+
+SI proposes emulating naturally occuring groups and their behaviour for optimal functioning. $\textit{Swarm}$ refers to a group of disorganized individuals working towards the common goal of finding the global optimum. When viewed seperatley, these individuals are particularly ineffective. However when properly instructed, these individuals transform into a centralized, collective and self-organized entity. When deployed accurately, a dynamic search pattern, better than random search, appears. This intelligence and self-organizing technique is called Swarm intelligence and is depicted in Algorithm $\ref{alg:SI}$.
+
+\begin{algorithm}[!t]
+\footnotesize
+\caption{Swarm Intelligence}
+\label{alg:SI}
+\begin{algorithmic}[1]
+\STATE \textbf{Input:} Swarm population size $\textit{n}$, Set of stopping criteria $\lambda\textsubscript{i}$, fitness function $\textit{f}$
+\STATE Create a Swarm of candidate solutions $\textit{S}$ of size $\textit{n}$ 
+\FOR{Each candidate $\textit{s\textsubscript{i}}$ in $\textit{S}$}
+\STATE Apply $\textit{f}$ on $\textit{s\textsubscript{i}}$
+\ENDFOR
+\STATE Based on selected architecture, establish group dynamics
+\WHILE{Any of $\lambda\textsubscript{i}$ are not met}
+\IF{Predicted Fitness is acceptable}
+\STATE Apply algorithms related to the selection phase
+\ELSE
+\STATE Apply algorithms related to the variation phase
+\ENDIF
+\ENDWHILE
+\STATE Predicted solution corresponds to global optimum
+\end{algorithmic}
+\end{algorithm}
+
+\subsection{Genetic Modifiers}
+
+Under the umbrella of EA, Genetic Algorithms (GA) has emerged as one of the most popular search and optimization techniques. The core of GA lies in the feedback process, which updates the candidate solutions in accordance with 3 main sub-processes. Figure $\ref{ga}$ summarizes the entire process of GA.
+
+\begin{itemize}
+\item Selection: This step involves selecting the candidates having the best fitness score 
+\item Crossover: The characteristics of the parents selected at the selection stage are intermixed to generate better candidates in the next generation 
+\item Mutation: As an add-on to the generational transition, random changes are added to add diversity and possibly improve the candidates
+\end{itemize}
+
+\begin{figure}[!b]
+\centering
+\includegraphics[height=7.93cm]{ga.png}
+\caption{Genetic Algorithm}
+\label{ga}
+\end{figure}
+
+\section{Democratic Algorithm (DA)}
+
+In this section we present DA, a novel social-construct based algorithm heavily inspired from swarm intelligence and real life social establishments. 
+
+\subsection{Inspiration}
+The term "Democracy" was coined in Athens, Greece and literally translates to "Strength of the People". The 2 main characteristics borrowed from the social ideology for this algorithm are as follows.
+
+\begin{itemize}
+\item Equal opportunity for any candidate to ascend and claim the global decision making spot
+\item Proportional inflluence on the decision making process.
+
+\end{itemize}
+
+We follow an extended social hierarchical structure to incorporate some fundamentals of SI into this algorithm. The structure is displayed in figure 
+
+\begin{figure}[!t]
+\centering
+\includegraphics[height=7cm]{struct.png}
+\caption{Structure of DA}
+\label{ga}
+\end{figure}
 % This document is a model and instructions for \LaTeX.
 % Please observe the conference page limits. 
 % 
