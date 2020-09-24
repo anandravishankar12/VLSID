@@ -233,18 +233,28 @@ The term "Democracy" was coined in Athens, Greece and literally translates to "S
 
 \begin{itemize}
 \item Equal opportunity for any candidate to ascend and claim the global decision making spot
-\item Proportional inflluence on the decision making process.
+\item Proportional influence on the decision making process.
 
 \end{itemize}
 
-We follow an extended social hierarchical structure to incorporate some fundamentals of SI into this algorithm. The structure is displayed in figure 
+We follow an extended social hierarchical structure to incorporate some fundamentals of SI into this algorithm. The initial population set is divided into 5 departments: A, B, C, D, E and are arranged as shown in figure $\ref{struct}$.
 
 \begin{figure}[!t]
 \centering
-\includegraphics[height=7cm]{struct.png}
+\includegraphics[height=6cm]{struct.png}
 \caption{Structure of DA}
-\label{ga}
+\label{struct}
 \end{figure}
+
+The division of departments is based on the relative scores obtained against the set fitness function. Candidates belonging to the higher departments dictate the overall global optima searching process whilst guiding and taking advice from the lower departments. Following initialization, there are 2 main seasons involved in this algorithm.
+\begin{itemize}
+\item Guiding Season
+\item Voting Season
+\end{itemize}
+
+In the following subsections, mathematical models of the social hierarchy and the seasons are explained, followed by outlining of the entire algorithm.  
+
+
 % This document is a model and instructions for \LaTeX.
 % Please observe the conference page limits. 
 % 
