@@ -254,6 +254,56 @@ The division of departments is based on the relative scores obtained against the
 
 In the following subsections, mathematical models of the social hierarchy and the seasons are explained, followed by outlining of the entire algorithm.  
 
+\subsection{Guiding Season}
+
+This phase has the sole purpose of finding the optimal solution. Candidates belonging to the highest department are responsible for finding the solution. The other candidates act as advisers which help maintain the social structure and prevent the search process from falling into local optima. 
+
+\begin{algorithm}[!t]
+\footnotesize
+\caption{DA pseudocode}
+\label{alg:da}
+\begin{algorithmic}[1]
+\STATE \textbf{Input:} Population size $\textit{n}$, random vector set $\vec{r\textsubscript{1,j}}$, $\vec{r\textsubscript{2,j}} \in$ [0,1], weight vector $\vec{w}$, initial estimate of global optimum $\textit{X\textsubscript{g}}$, time period $\textit{T}$, threshold $\lambda$, fitness function $\textit{f}$, coefficient vector sets $\vec{A\textsubscript{j}}$, $\vec{C\textsubscript{j}}$ and $\vec{a\textsubscript{j}}$
+\STATE Set $\textit{t}$ = 0
+\STATE Initialize vector set $\vec{A\textsubscript{j}}$ = 2$\vec{a} \cdot \vec{r\textsubscript{1}}$ - $\vec{a}$
+\STATE Initialize vector set $\vec{C\textsubscript{j}}$ = 2$\vec{r\textsubscript{2}}$
+% and $\vec{a\textsubscript{j}}$
+\IF {Table $\textit{H}$ exists with current function problem}
+\STATE Refer to table $\textit{H}$ for solution
+\ELSE
+\STATE Create table $\textit{H}$ mapping input to corresponding output and apply memoization
+\STATE Create table $\textit{R}$ to store the performance of each department
+\FOR{i $\in$ [1,n]}  
+\STATE Generate population results $\textit{X\textsubscript{i}(t)}$ at instance $\textit{t}$
+\STATE Evaluate each individual against the fitness function
+\ENDFOR
+\STATE Assign A, B, C, D, E departments as per the score against the fitness function. 
+\STATE Evaluate $\vec{D\textsubscript{j}} = |\vec{C} \cdot \vec{X\textsubscript{g}}(t) - \vec{X\textsubscript{j}}(t)|$
+\WHILE{t $<$ T}
+\FOR{Each individual $\textit{X\textsubscript{i,j}(t)}$ in each department $\textit{j}$}
+\STATE Update $\textit{X\textsubscript{i,j}(t)}$ := $\textit{X\textsubscript{j}(t)}$ - $\vec{A}$($\vec{D\textsubscript{j}}$)
+\STATE $\textit{X\textsubscript{i,j}(t+1)}$ = $\frac{\vec{w} \cdot \textit{X\textsubscript{i,j}(t)}}{5}$
+\ENDFOR
+\STATE Check fitness of $\textit{X\textsubscript{top}}$ against $\textit{f}$
+\IF{Fitness score is acceptable}
+\STATE Increase score of $\textit{X\textsubscript{top}}$ in $\textit{R\textsubscript{top}}$ by 1
+\ELSE
+\STATE Decrease score of $\textit{X\textsubscript{top}}$ in $\textit{R\textsubscript{top}}$ by 1
+\ENDIF
+\ENDWHILE
+\STATE At $\textit{t}$ = $\textit{T}$, check score of top department
+\IF{$\textit{score\textsubscript{top}} \geq \lambda$}
+\STATE Continue
+\ELSE
+\STATE Replace $\textit{X\textsubscript{top}}$ with $\textit{X\textsubscript{top-1}}$
+\ENDIF
+\STATE Update $\vec{a}$ := 2($\frac{T-t}{T}$)
+\STATE Update $\vec{A}$ and $\vec{C}$ accordingly
+\STATE $\textit{X\textsubscript{top}}$ represent required set of optimal solutions
+\STATE Add corresponding function and solution to $\textit{H}$ for future reference
+\ENDIF
+\end{algorithmic}
+\end{algorithm}
 
 % This document is a model and instructions for \LaTeX.
 % Please observe the conference page limits. 
