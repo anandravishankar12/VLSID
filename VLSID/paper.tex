@@ -237,7 +237,7 @@ The term "Democracy" was coined in Athens, Greece and literally translates to "S
 
 \end{itemize}
 
-We follow an extended social hierarchical structure to incorporate some fundamentals of SI into this algorithm. The initial population set is divided into 5 departments: A, B, C, D, E and are arranged as shown in figure $\ref{struct}$.
+We follow an extended social hierarchical structure to incorporate some fundamentals of SI into this algorithm. The initial population set is divided into five departments: A, B, C, D, E and are arranged as shown in figure $\ref{struct}$.
 
 \begin{figure}[!t]
 \centering
@@ -246,17 +246,23 @@ We follow an extended social hierarchical structure to incorporate some fundamen
 \label{struct}
 \end{figure}
 
-The division of departments is based on the relative scores obtained against the set fitness function. Candidates belonging to the higher departments dictate the overall global optima searching process whilst guiding and taking advice from the lower departments. Following initialization, there are 2 main seasons involved in this algorithm.
+The division of departments is based on the relative scores obtained against the set fitness function. Candidates belonging to the higher departments dictate the overall global optima searching process whilst guiding and taking advice from the lower departments. Following initialization, there are two main seasons involved in this algorithm.
 \begin{itemize}
 \item Guiding Season
 \item Voting Season
 \end{itemize}
 
-In the following subsections, mathematical models of the social hierarchy and the seasons are explained, followed by outlining of the entire algorithm.  
+In the following subsections, models of the social hierarchy and the seasons are explained, followed by outlining of the entire algorithm.  
 
 \subsection{Guiding Season}
 
-This phase has the sole purpose of finding the optimal solution. Candidates belonging to the highest department are responsible for finding the solution. The other candidates act as advisers which help maintain the social structure and prevent the search process from falling into local optima. 
+This phase has the sole purpose of finding the optimal solution. Candidates belonging to the highest department are responsible for finding the solution. The other candidates act as advisers which help maintain the social structure and prevent the search process from falling into local optima. In order to introduce a dynamic factor the search process, the solutions obtained by the top departments are continously stored in a table for any future reference. The updation of the current position is done based a a weighted sum of the current position of all the departments. Based on the difference between the solution provided and the true solution, the top department's reqard score is either incremented or decremented by 1. 
+
+\subsection{Voting Season}
+
+After a set time period $\textit{T}$ if the total reward score does not exceed a threshold $\lambda$ then the top department is replaced by the one just below it. If $\lambda$ is exceeded, then the next problem is loaded with the current configuration.
+
+The entire process of guiding and voting is displayed in Algorithm $\ref{alg:da}$.
 
 \begin{algorithm}[!t]
 \footnotesize
@@ -305,6 +311,18 @@ This phase has the sole purpose of finding the optimal solution. Candidates belo
 \end{algorithmic}
 \end{algorithm}
 
+\subsection{Key points}
+
+Based on the mathematical representation, the following observations can be made:
+\begin{itemize}
+\item The updation process occurs at an individual and departmental level to save the best solutions obtained so far
+\item The parameters $\vec{A}$ and $\vec{C}$ assist the solutions to have higher dimensionality
+\item Due to the dual updation and introduction of a memory element, the problems functions will saturate at a middle level department
+\item The voting season provides weighted rights to each candidate in each department. The weights are assigned based on the individual's fitness which in turn is dependent on their department's position 
+\item The increased number of parameters requires fine tunning which can be automated
+\end{itemize}
+
+To sum up, DA starts with generating and evaluating a set of candidate solutions. The solutions are grouped according to their relative goodness of fit. The top candidates are responsible for finding the optimum solution while the other candidates are required to maintain the hierarchy, provide valuable input to the leaders and contest when the results begin deteriorating. When the top department does not function as per requirement, the lower departments replace it. A memory component is introduced in the form of a table which maps the previously encountered inputs to their corresponding outputs. 
 % This document is a model and instructions for \LaTeX.
 % Please observe the conference page limits. 
 % 
