@@ -8,7 +8,16 @@
 \usepackage{amssymb}
 \usepackage{algorithm}
 \usepackage{textcomp}
-\usepackage{amsmath}% http://ctan.org/pkg/amsmath
+\usepackage{amsmath}
+\usepackage{amsmath,amsfonts}
+\usepackage{array,booktabs}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{stackrel}
+\usepackage{breqn}
+% \usepackage{isomath}
+\usepackage{mathtools}
+% http://ctan.org/pkg/amsmath
 \newcommand\sufr[3][0pt]{$\rule{0pt}{\dimexpr#1+1.4ex\relax}^\frac{#2}{#3}$}
 \usepackage{xcolor}
 \def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
@@ -319,10 +328,83 @@ Based on the mathematical representation, the following observations can be made
 \item The parameters $\vec{A}$ and $\vec{C}$ assist the solutions to have higher dimensionality
 \item Due to the dual updation and introduction of a memory element, the problems functions will saturate at a middle level department
 \item The voting season provides weighted rights to each candidate in each department. The weights are assigned based on the individual's fitness which in turn is dependent on their department's position 
+\item As the department rank increases, the number of individual candidate in the department decreases to promote elitism. This would ensure survival of the best solutions in future problems. 
+\item As the department rank decreases, the number of individual candidate in the department increase to promote diversity. This would open up new avenues to explore and possibly increase chances of finding the gobal optimum.  
 \item The increased number of parameters requires fine tunning which can be automated
 \end{itemize}
 
 To sum up, DA starts with generating and evaluating a set of candidate solutions. The solutions are grouped according to their relative goodness of fit. The top candidates are responsible for finding the optimum solution while the other candidates are required to maintain the hierarchy, provide valuable input to the leaders and contest when the results begin deteriorating. When the top department does not function as per requirement, the lower departments replace it. A memory component is introduced in the form of a table which maps the previously encountered inputs to their corresponding outputs. 
+
+\section{Results and Discussion}
+
+In this section the DA algorithm is benchmarked against 18 standard minimization functions. These functions are described in Table $\ref{tab:1}$. The DA was iterated 20 times on each of these functions and the results were compared against other popular SI algorithms such as Particle Swarm Optimization (PSO), Grey Wolf Optimization (GWO), Multiverse Optimization (MVO) and Cuckoo Search (CS). The metric based results such as mean and standard deviation is listed in Table 
+
+\begin{table*}[!t]
+\caption{\textsc{Benchmark Functions}}
+\label{tab:1}
+\centering
+\scalebox{0.9}
+{
+\begin{tabular}{| >{\arraybackslash}m{0.88in} | c | c | >{\arraybackslash}m{0.4in} | c | >{\arraybackslash}m{1in} |}
+\hline
+Function & ID & Formula & Modality & Range & Minimum Value \\
+\hline
+Matyas & F1 & $0.26(x\textsubscript{2} + y\textsubscript{2}) - 0.48xy$ & Uni & [-10,10] & 0 at $x\textsuperscript{*}$ = (0,0)\\
+Booth & F2 & $(x + 2y - 7)\textsuperscript{2} + (2x + y - 5)\textsuperscript{2}$ & Uni & [-10,10] & 0 at $x\textsuperscript{*}$ = (1,3)\\
+Bohachevsky & F3 & $x\textsuperscript{2} + 2y\textsuperscript{2} -0.3cos(3\pi x)-0.4cos(4\pi y)+0.7$ & Uni & [-100,100] & 0 at $x\textsuperscript{*}$ = (0,0)\\
+Gramacy and Lee & F4 & $\frac{sin(10\pi x)}{2x} + (x-1)\textsuperscript{4}$ & Uni & [-0.5,2.5] & -0.869011134989500 at $x\textsuperscript{*}$ = (0.548563444114526)\\
+Leon & F5 & $100(y-x\textsuperscript{3})\textsuperscript{2}$ + $(1-x)\textsuperscript{2}$ & Uni & [-10,10] & 0 at $x\textsuperscript{*}$ = (1,1)\\
+Ackley & F6 & $-20 exp(-0.2 \sqrt{\frac{1}{n} \sum_{i=1}^n x_i^2}) - exp(\frac{1}{n} \sum_{i=1}^n cos(2\pi x_i)) + 20 + e$ & Multi & [-32,32] & 0 at $x\textsuperscript{*}$ = (0,0)\\
+Bartels & F7 & $|x\textsuperscript{2} + y\textsuperscript{2} + xy| + |sin(x)| + |cos(y)|$ & Multi & [-500,500], [-500,500] & 1 at $x\textsuperscript{*}$ = (0,0)\\
+Branin & F8 & $a(x\textsubscript{2} - bx\textsubscript{1}\textsuperscript{2} + cx\textsubscript{1} - r)\textsuperscript{2}$ + $s(1-t)cos(x\textsubscript{1})$ + s & Multi & [-5,10], [0,15] & 0.397887 at $x\textsuperscript{*}$ = (-$\pi$, 12.2.275)\\
+Egg Crate & F9 & $x\textsuperscript{2}$ + $y\textsuperscript{2}$ + $25(sin\textsuperscript{2}(x) + cos\textsuperscript{2}(x))$ & Multi & [-5,5] & 0 at $x\textsuperscript{*}$ = (0,0)\\
+Qing & F10 & $\sum_{i=1}^{n}(x^2-i)^2$ & Multi & [-500,500] & 0 at $x\textsuperscript{*}$ = ($\pm\sqrt{i}$)\\
+Rastrigin & F11 & $10n + \sum_{i=1}^{n}(x_i^2 - 10cos(2\pi x_i))$ & Multi & [-5.12,5.12], [-500,500] & 0 at $x\textsuperscript{*}$ = (0,0)\\
+Rosenbrock & F12 & $\sum_{i=1}^{n}[b (x_{i+1} - x_i^2)^ 2 + (a - x_i)^2]$ & Multi & [-5.12,5.12], [-5,10] & 0 at $x\textsuperscript{*}$ = (1)\\
+Bird & F13 & $sin(x)e\textsuperscript{(1-cos(y))^2}+cos(y)e\textsuperscript{(1-sin(x))^2}+(x-y)\textsubscript{2}$ & Multi & [-2$\pi$, 2$\pi$] & -106.764537 at $x\textsuperscript{*}$ = (4.70104,3.15294), (-1.58214,-3.13024)\\
+Powell Sum & F14 & $\sum_{i=1}^{n}|x_i|^{i+1}$ & Multi & [-1,1] & 0 at $x\textsuperscript{*}$ = 0\\
+Schaffer & F15 & $0.5 + \frac{sin\textsuperscript{2}(x\textsuperscript{2}-y\textsuperscript{2})-0.5}{(1+0.001(x\textsuperscript{2}+x\textsuperscript{2}))\textsuperscript{2}}$ & Multi & [-100,100] & 0 at $x\textsuperscript{*}$ = (0,0)\\
+Shubert & F16 & $\prod_{i=1}^{n}{\left(\sum_{j=1}^5{ cos((j+1)x_i+j)}\right)}$ & Multi & [-10,10] & -186.7309 \\
+Happy Cat & F17 & $\left[\left(||\textbf{x}||^2 - n\right)^2\right]^\alpha + \frac{1}{n}\left(\frac{1}{2}||\textbf{x}||^2+\sum_{i=1}^{n}x_i\right)+\frac{1}{2}$ & Multi & [-2,2] & 0 at $x\textsuperscript{*}$ = (-1) \\
+Alpine & F18 & $\prod_{i=1}^{n}\sqrt{x_i}sin(x_i)$ & Multi & [0,10] & 2.808 at $x\textsuperscript{*}$ = (7.917) \\
+\hline
+\end{tabular}
+}
+\end{table*}
+
+\begin{table*}[t]
+\caption{\textsc{Benchmark Results}}
+\label{tab:2}
+\centering
+{
+\begin{tabular}{| c | c  c | c  c | c  c | c  c | c  c |}
+\hline
+{\textbf{Function}}&{\textbf{PSO}}&{}&{\textbf{GWO}}&{}&{\textbf{MVO}}&{}&{\textbf{CS}}&{}&{\textbf{DA}}&{}\\
+\hline
+{}&{\textbf{Mean}}&{\textbf{Std}}&{\textbf{Mean}}&{\textbf{Std}}&{\textbf{Mean}}&{\textbf{Std}}&{\textbf{Mean}}&{\textbf{Std}}&{\textbf{Mean}}&{\textbf{Std}}\\
+\hline
+{F1}&{1.39E-08}&{6.24E-04}&{2.41E-06}&{4.98E-05}&{5.21E-06}&{8.23E-08}&{9.11E-06}&{4.39E-07}&{8.71E-06}&{5.11E-05}\\
+{F2}&{4.89E-10}&{8.79E-04}&{6.76E-09}&{5.11E-06}&{6.18E-07}&{5.84E-08}&{9.51E-09}&{3.84E-07}&{7.62E-11}&{2.62E-06}\\
+{F3}&{}&{}&{}&{}&{}&{}&{}&{}&{}&{}\\
+{F4}&{}&{}&{}&{}&{}&{}&{}&{}&{}&{}\\
+{F5}&{}&{}&{}&{}&{}&{}&{}&{}&{}&{}\\
+{F6}&{}&{}&{}&{}&{}&{}&{}&{}&{}&{}\\
+{F7}&{}&{}&{}&{}&{}&{}&{}&{}&{}&{}\\
+{F8}&{}&{}&{}&{}&{}&{}&{}&{}&{}&{}\\
+{F9}&{}&{}&{}&{}&{}&{}&{}&{}&{}&{}\\
+{F10}&{}&{}&{}&{}&{}&{}&{}&{}&{}&{}\\
+{F11}&{}&{}&{}&{}&{}&{}&{}&{}&{}&{}\\
+{F12}&{}&{}&{}&{}&{}&{}&{}&{}&{}&{}\\
+{F13}&{}&{}&{}&{}&{}&{}&{}&{}&{}&{}\\
+{F14}&{}&{}&{}&{}&{}&{}&{}&{}&{}&{}\\
+{F15}&{}&{}&{}&{}&{}&{}&{}&{}&{}&{}\\
+{F16}&{}&{}&{}&{}&{}&{}&{}&{}&{}&{}\\
+{F17}&{}&{}&{}&{}&{}&{}&{}&{}&{}&{}\\
+{F18}&{}&{}&{}&{}&{}&{}&{}&{}&{}&{}\\
+\hline
+\end{tabular}
+}
+\end{table*}
 % This document is a model and instructions for \LaTeX.
 % Please observe the conference page limits. 
 % 
