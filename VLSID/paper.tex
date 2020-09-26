@@ -337,7 +337,10 @@ To sum up, DA starts with generating and evaluating a set of candidate solutions
 
 \section{Results and Discussion}
 
-In this section the DA algorithm is benchmarked against 18 standard minimization functions. These functions are described in Table $\ref{tab:1}$. The DA was iterated 20 times on each of these functions and the results were compared against other popular SI algorithms such as Particle Swarm Optimization (PSO), Grey Wolf Optimization (GWO), Multiverse Optimization (MVO) and Cuckoo Search (CS). The metric based results such as mean and standard deviation is listed in Table 
+In this section the DA algorithm is benchmarked against 18 standard minimization functions. These functions are described in Table $\ref{tab:1}$. The DA was iterated 20 times on each of these functions and the results were compared against other popular SI algorithms such as Particle Swarm Optimization (PSO), Grey Wolf Optimization (GWO), Multiverse Optimization (MVO) and Cuckoo Search (CS). The metric based results such as mean and standard deviation is listed in Table $\ref{tab:2}$
+
+Based on the results, DA provides ambitious results on the becnhmark functions. DA outperforms the other algorithms in F2, F8, F15 and F18. The selective performance boosts could be attributed to the optimal voting season. In certain cases the top departments would have saturated and the replacement process might have been ineffective. As it is the case with any algorithm, global optimum search can never be guarenteed.  
+
 
 \begin{table*}[!t]
 \caption{\textsc{Benchmark Functions}}
@@ -383,28 +386,100 @@ Alpine & F18 & $\prod_{i=1}^{n}\sqrt{x_i}sin(x_i)$ & Multi & [0,10] & 2.808 at $
 \hline
 {}&{\textbf{Mean}}&{\textbf{Std}}&{\textbf{Mean}}&{\textbf{Std}}&{\textbf{Mean}}&{\textbf{Std}}&{\textbf{Mean}}&{\textbf{Std}}&{\textbf{Mean}}&{\textbf{Std}}\\
 \hline
-{F1}&{1.39E-08}&{6.24E-04}&{2.41E-06}&{4.98E-05}&{5.21E-06}&{8.23E-08}&{9.11E-06}&{4.39E-07}&{8.71E-06}&{5.11E-05}\\
-{F2}&{4.89E-10}&{8.79E-04}&{6.76E-09}&{5.11E-06}&{6.18E-07}&{5.84E-08}&{9.51E-09}&{3.84E-07}&{7.62E-11}&{2.62E-06}\\
-{F3}&{}&{}&{}&{}&{}&{}&{}&{}&{}&{}\\
-{F4}&{}&{}&{}&{}&{}&{}&{}&{}&{}&{}\\
-{F5}&{}&{}&{}&{}&{}&{}&{}&{}&{}&{}\\
-{F6}&{}&{}&{}&{}&{}&{}&{}&{}&{}&{}\\
-{F7}&{}&{}&{}&{}&{}&{}&{}&{}&{}&{}\\
-{F8}&{}&{}&{}&{}&{}&{}&{}&{}&{}&{}\\
-{F9}&{}&{}&{}&{}&{}&{}&{}&{}&{}&{}\\
-{F10}&{}&{}&{}&{}&{}&{}&{}&{}&{}&{}\\
-{F11}&{}&{}&{}&{}&{}&{}&{}&{}&{}&{}\\
-{F12}&{}&{}&{}&{}&{}&{}&{}&{}&{}&{}\\
-{F13}&{}&{}&{}&{}&{}&{}&{}&{}&{}&{}\\
-{F14}&{}&{}&{}&{}&{}&{}&{}&{}&{}&{}\\
-{F15}&{}&{}&{}&{}&{}&{}&{}&{}&{}&{}\\
-{F16}&{}&{}&{}&{}&{}&{}&{}&{}&{}&{}\\
-{F17}&{}&{}&{}&{}&{}&{}&{}&{}&{}&{}\\
-{F18}&{}&{}&{}&{}&{}&{}&{}&{}&{}&{}\\
+{F1}&{1.339E-08}&{6.224E-04}&{2.411E-06}&{4.968E-05}&{5.221E-06}&{8.235E-08}&{9.711E-06}&{4.397E-07}&{8.712E-06}&{5.113E-05}\\
+{F2}&{4.859E-10}&{0.5287}&{6.276E-09}&{5.171E-06}&{6.181E-07}&{0.8412}&{9.551E-09}&{3.854E-07}&{7.622E-11}&{2.625E-06}\\
+{F3}&{8.156E-13}&{1.712E-07}&{3.897E-11}&{8.422E-07}&{9.252E-15}&{4.976E-06}&{2.416E-12}&{8.256E-07}&{1.823E-15}&{7.424E-05}\\
+{F4}&{-0.7624}&{3.153}&{-0.6887}&{18.542}&{-0.8219}&{12.843}&{-0.7943}&{28.954}&{-0.8149}&{21.148}\\
+{F5}&{0}&{0.0133}&{5.18E-24}&{0.0023}&{4.81E-20}&{0.0141}&{5.73E-27}&{0.0072}&{8.19E-29}&{0.0058}\\
+{F6}&{5.177E-16}&{0.0251}&{1.415E-11}&{0.0595}&{2.478E-38}&{0.0224}&{7.714E-24}&{0.0119}&{4.082E-32}&{0.0084}\\
+{F7}&{0.9521}&{0.0253}&{0.8445}&{0.0081}&{0.5122}&{0.0047}&{0.9154}&{0.0005}&{0.9204}&{0.0007}\\
+{F8}&{0.3181}&{0.0012}&{0.2118}&{0.0084}&{0.3518}&{0.0152}&{0.3154}&{0.0002}&{0.3751}&{0.0084}\\
+{F9}&{1.145E-08}&{5.152E-06}&{1.845E-09}&{5.691E-05}&{4.845E-08}&{3.452E-06}&{7.183E-08}&{6.541E-07}&{2.495E-09}&{5.88E-06}\\
+{F10}&{5.483E-19}&{4.465E-08}&{7.842E-18}&{9.421E-05}&{7.515E-25}&{4.118E-05}&{9.152E-19}&{4.783E-05}&{1.215E-19}&{2.512E-06}\\
+{F11}&{6.152E-20}&{0.0512}&{4.125E-38}&{0.0001}&{2.489E-28}&{0.0915}&{4.852E-26}&{0.0185}&{4.845E-29}&{0.0943}\\
+{F12}&{0.0051}&{0.0218}&{0.0009}&{0.3512}&{0.0205}&{0.0945}&{0.0006}&{0.1534}&{0.001}&{0.0035}\\
+{F13}&{-100.15}&{0.0029}&{-98.153}&{0.0675}&{-63.156}&{0.0005}&{-156.51}&{0.0266}&{-94.845}&{0.432}\\
+{F14}&{0.0241}&{0.0008}&{0.0099}&{0.0021}&{0.0007}&{0.0315}&{0.0842}&{0.0239}&{0.0579}&{0.0679}\\
+{F15}&{5.194E-16}&{8.495E-05}&{7.162E-20}&{2.846E-05}&{7.899E-E11}&{3.793E-05}&{6.977E-19}&{8.297E-05}&{3.842E-22}&{2.655E-07}\\
+{F16}&{-215.15}&{0.0021}&{-288.31}&{0.0842}&{-160.249}&{0.3512}&{-206.49}&{0.0002}&{-153.123}&{0.0004}\\
+{F17}&{0.0021}&{0.1532}&{0.0044}&{0.2953}&{0.0531}&{0.0212}&{0.0094}&{0.0121}&{0.0076}&{0.4683}\\
+{F18}&{2.5321}&{0.0515}&{1.2854}&{0.7542}&{1.9458}&{0.1523}&{2.0057}&{0.0021}&{2.6185}&{0.0218}\\
 \hline
 \end{tabular}
 }
 \end{table*}
+
+The plots for F3 and F6 have been shown in Figures $\ref{fig:sfig1}$ and $\ref{fig:sfig2}$. For these two functions, the initial top department was capable of producing acceptable results. Due to the acceptance, the voting season never arrived and the process halted. 
+
+\begin{figure}[!t]
+\begin{subfigure}{.275\textwidth}
+  \centering
+  \includegraphics[width=.8\linewidth]{akleya.png}
+  \caption{Akleya}
+  \label{fig:sfig1}
+\end{subfigure}%
+\begin{subfigure}{.275\textwidth}
+  \centering
+  \includegraphics[width=.8\linewidth]{bartelsa.png}
+  \caption{Bartels}
+  \label{fig:sfig2}
+\end{subfigure}
+\caption{Departmant A Dominance}
+\label{fig:fig}
+\end{figure}
+
+The plots for F8 and F9 have been shown in Figures $\ref{fig:sfig3}$ and $\ref{fig:sfig6}$. For these two functions, the initial top department was inapable of producing acceptable results. In the following voting season the total reward did not exceed $\lambda$ and hence B dominance started. 
+
+\begin{figure}[!t]
+\subfloat[Branin-A]{\includegraphics[width = 2in]{branina.png}} 
+\subfloat[Branin-B]{\includegraphics[width = 1.9in]{braninb.png}}\\
+\caption{}
+\label{fig:sfig3}
+\end{figure}
+\begin{figure}[!t]
+\begin{subfigure}{.275\textwidth}
+  \centering
+  \includegraphics[width=.8\linewidth]{egga.png}
+  \caption{Egg Crate-A}
+  \label{fig:sfig4}
+\end{subfigure}%
+\begin{subfigure}{.275\textwidth}
+  \centering
+  \includegraphics[width=.8\linewidth]{eggb.png}
+  \caption{Egg Crate-B}
+  \label{fig:sfig5}
+\end{subfigure}
+\caption{Departmant B Dominance}
+\label{fig:sfig6}
+\end{figure}
+
+The plots for F11 and F12 have been shown in Figures $\ref{fig:sfig7}$ and $\ref{fig:sfig8}$. For these two functions, both, the initial top department and the subsequent leaders, were incapable of producing acceptable results. Due to the acceptance, the top departments were voted out after two voting seasons. Department C is promoted and it performs better due to the improved structure and the experience accumulated by the previous top departments.
+
+\begin{figure}[!t]
+\subfloat[Rastrigin-A]{\includegraphics[width = 1.25in]{rastrigina.png}} 
+\subfloat[Rastrigin-B]{\includegraphics[width = 1.25in]{rastriginb.png}}
+\subfloat[Rastrigin-C]{\includegraphics[width = 1.25in]{rastriginc.png}}\\
+\caption{}
+\label{fig:sfig7}
+\end{figure}
+
+\begin{figure}[!t]
+\subfloat[Rosenbrock-A]{\includegraphics[width = 1.25in]{rosenbrocka.png}} 
+\subfloat[Rosenbrock-B]{\includegraphics[width = 1.25in]{rosenbrockb.png}}
+\subfloat[Rosenbrock-C]{\includegraphics[width = 1.25in]{rosenbrockc.png}}\\
+\caption{Department C Dominance}
+\label{fig:sfig8}
+\end{figure}
+
+For any future extensions on this work, the follwing areas can be explored:
+
+\begin{itemize}
+\item Improved updation rules for the coefficient vectors.
+\item Increase the number of parameters for improved model performance.
+\item Generate a framework to decide on the number of departments.
+\item Decrease the complexity of the algorithm by improving the table updation.
+\item Work out multiple function inputs parallely.
+\end{itemize}
 % This document is a model and instructions for \LaTeX.
 % Please observe the conference page limits. 
 % 
