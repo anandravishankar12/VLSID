@@ -95,7 +95,7 @@ x\textsubscript{i}\textsuperscript{L} \le x\textsubscript{i} \le x\textsubscript
 
 Equation $\ref{eqn:1}$ describes a general MOOP consisting of $\textit{M}$ single-objective functions having $\textit{K}$ equality bounds and $\textit{J}$ inequality bounds \cite{chankong}. The $\textit{n}$ input vector components $\textit{x\textsubscript{i}}$ are also bounded within a lower $\textit{x\textsubscript{i}\textsuperscript{L}}$ and upper $\textit{x\textsubscript{i}\textsuperscript{U}}$ bound.
 
-Usually MOOPs are solved by decomposing them into multiple single-objective optimization problems. However, the striking difference in this method and directly solving a MOOP lies in the decision space. For a pure MOOP, the multi-dimensional decision space is accompanied with an objective space $\textit{Z}$. For each solution $\textit{x}$, there is a point in the objective space denoted by $\textit{z} = (\textit{z\textsubscript{1}}, \textit{z\textsubscript{2}}, \textit{z\textsubscript{3}}, \dots, \textit{z\textsubscript{M}})$. Hence pure MOOPs optimize a vector whereas multiple single-objective optimization problems optimize singular variables. 
+Usually MOOPs are solved by decomposing them into multiple single-objective optimization problems \cite{liu}. However, the striking difference in this method and directly solving a MOOP lies in the decision space. For a pure MOOP, the multi-dimensional decision space is accompanied with an objective space $\textit{Z}$. For each solution $\textit{x}$, there is a point in the objective space denoted by $\textit{z} = (\textit{z\textsubscript{1}}, \textit{z\textsubscript{2}}, \textit{z\textsubscript{3}}, \dots, \textit{z\textsubscript{M}})$. Hence pure MOOPs optimize a vector \cite{Deb} whereas multiple single-objective optimization problems optimize singular variables. 
 
 \subsection{Orthodox Methods of Solving MOOPs}
 
@@ -105,7 +105,7 @@ The techniques developed in this section describe classical techniques which are
 
 \item Weighting Sum Method: 
 
-In this algorithm, the MOOP is decomposed into multiple singular problems and each problem is assigned a weight corresponding to it's respective importance to the global front. The weights must be quantified based on prior information and the singular objective functions must be normalized for proper setting of the weight vector. Equation $\ref{eqn:2}$ decomposes the MOOP $F\textsubscript{m}(x)$ into $\textit{m}$ single-objective optimization problems and weight vector $w\textsubscript{m}$, subject to constraints mentioned in Equation $\ref{eqn:1}$.
+In this algorithm, the MOOP is decomposed into multiple singular problems and each problem is assigned a weight corresponding to it's respective importance to the global front. The weights must be quantified based on prior information and the singular objective functions must be normalized for proper setting of the weight vector \cite{arora}. Equation $\ref{eqn:2}$ decomposes the MOOP $F\textsubscript{m}(x)$ into $\textit{m}$ single-objective optimization problems and weight vector $w\textsubscript{m}$, subject to constraints mentioned in Equation $\ref{eqn:1}$.
 
 \begin{equation}
 \label{eqn:2}
@@ -126,7 +126,7 @@ Optimize:F\textsubscript{m}(x) =  \sum_{m=1}^{M}w\textsubscript{m}f\textsubscrip
 
 \item Weighted Metric Method:
 
-This technique is a general extension of weighting sum method with a varient of combination of multiple objectives. Equation $\ref{eqn:3}$ represents this method where $\textit{l\textsubscript{p}}$ is the distance measure between candidate solution $\textit{x}$ and solution $\textit{z\textsuperscript{*}}$, parameter $\textit{p} \in [1,\infty]$. For $\textit{p}$ = 1, weighted metric decomposes into weighting sum method.
+This technique is a general extension of weighting sum method with a varient of combination of multiple objectives \cite{ryu}. Equation $\ref{eqn:3}$ represents this method where $\textit{l\textsubscript{p}}$ is the distance measure between candidate solution $\textit{x}$ and solution $\textit{z\textsuperscript{*}}$, parameter $\textit{p} \in [1,\infty]$. For $\textit{p}$ = 1, weighted metric decomposes into weighting sum method.
 
 \begin{equation}
 \label{eqn:3}
@@ -146,7 +146,7 @@ Optimize:l\textsubscript{p}(x) =  (\sum_{m=1}^{M}w\textsubscript{m}|f\textsubscr
 
 \item Value Function Method:
 
-In this method, the user must provide a value mapping function $\mathbb{U}:\mathbb{R\textsuperscript{M}} \rightarrow \mathbb{R}$ for all $\textit{M}$ functions. The optimization process is then reduced to Equation $\ref{eqn:4}$, subject to the same constraints as Equation $\ref{eqn:1}$
+In this method, the user must provide a value mapping function $\mathbb{U}:\mathbb{R\textsuperscript{M}} \rightarrow \mathbb{R}$ for all $\textit{M}$ functions. The optimization process is then reduced to Equation $\ref{eqn:4}$ \cite{sinha}, subject to the same constraints as Equation $\ref{eqn:1}$
 
 \begin{equation}
 \label{eqn:4}
@@ -176,7 +176,7 @@ In this section, we provide a brief overview of modern techniques which provide 
 
 \subsection{Quantified problems in Classical Computation}
 
-The algorithms described in the preceeding section can be classified as either direct search or gradient based search techniques. Direct search algorithms user described constriants are utilized in their raw format to guide the solution. Gradient based search techniques use derivatives of the objective function and constraints to guide the solution. However, both these techniques encouter similar problems as described:
+The algorithms described in the preceeding section can be classified as either direct search or gradient based search techniques \cite{arnold}. Direct search algorithms user described constriants are utilized in their raw format to guide the solution. Gradient based search techniques use derivatives of the objective function and constraints to guide the solution. However, both these techniques encouter similar problems as described:
 
 \begin{itemize}
 \item Result is dependent on selection of initial state 
@@ -188,7 +188,7 @@ The algorithms described in the preceeding section can be classified as either d
 \item Time incurred is high due to single search guidance system
 \end{itemize}
 
-These problems resulted in the development of new fields in Computational Intelligence, namely Evolutionary Algorithms (EA) and Swarm Intelligence (SI). The main motivation for the development of these algorithms is to alleviate the hurdles faced by classical algorithms. 
+These problems resulted in the development of new fields in Computational Intelligence, namely Evolutionary Algorithms (EA) \cite{vikhar} and Swarm Intelligence (SI) \cite{swarm}. The main motivation for the development of these algorithms is to alleviate the hurdles faced by classical algorithms. 
 
 \subsection{Swarm Intelligence to the Rescue}
 
@@ -218,12 +218,12 @@ SI proposes emulating naturally occuring groups and their behaviour for optimal 
 
 \subsection{Genetic Modifiers}
 
-Under the umbrella of EA, Genetic Algorithms (GA) has emerged as one of the most popular search and optimization techniques. The core of GA lies in the feedback process, which updates the candidate solutions in accordance with 3 main sub-processes. Figure $\ref{ga}$ summarizes the entire process of GA.
+Under the umbrella of EA, Genetic Algorithms (GA) \cite{man} has emerged as one of the most popular search and optimization techniques. The core of GA lies in the feedback process, which updates the candidate solutions in accordance with 3 main sub-processes. Figure $\ref{ga}$ summarizes the entire process of GA.
 
 \begin{itemize}
-\item Selection: This step involves selecting the candidates having the best fitness score 
-\item Crossover: The characteristics of the parents selected at the selection stage are intermixed to generate better candidates in the next generation 
-\item Mutation: As an add-on to the generational transition, random changes are added to add diversity and possibly improve the candidates
+\item Selection: This step involves selecting the candidates having the best fitness score. The method used for DA is the rank-based selection \cite{abdul} in which the probability of selection of a chromosome is directly related to the corresponding fitness value. 
+\item Crossover: The characteristics of the parents selected at the selection stage are intermixed to generate better candidates in the next generation. BLX or Blend Crossover \cite{kita} technique was utilized to have the optimal feature selection. 
+\item Mutation: As an add-on to the generational transition, random changes are added to add diversity and possibly improve the candidates. Inversion Mutation \cite{im} was applied to introduce a sense of randomness into the process.
 \end{itemize}
 
 \begin{figure}[!b]
@@ -337,9 +337,9 @@ To sum up, DA starts with generating and evaluating a set of candidate solutions
 
 \section{Results and Discussion}
 
-In this section the DA algorithm is benchmarked against 18 standard minimization functions. These functions are described in Table $\ref{tab:1}$. The DA was iterated 20 times on each of these functions and the results were compared against other popular SI algorithms such as Particle Swarm Optimization (PSO), Grey Wolf Optimization (GWO), Multiverse Optimization (MVO) and Cuckoo Search (CS). The metric based results such as mean and standard deviation is listed in Table $\ref{tab:2}$. The experiment was set up on a 64-bit Machine with Ubuntu 20.04, Intel® CoreTM i5-7200U CPU @ 2.50GHz × 4, with a GeForce 940MX/PCle/SSE2 graphic card.
+In this section the DA algorithm is benchmarked against 18 standard minimization functions. These functions are described in Table $\ref{tab:1}$. The DA was iterated 20 times on each of these functions and the results were compared against other popular SI algorithms such as Particle Swarm Optimization (PSO) \cite{pso}, Grey Wolf Optimization (GWO) \cite{gwo}, Multiverse Optimization (MVO)\cite{mvo} and Cuckoo Search (CS) \cite{cs}. The metric based results such as mean and standard deviation is listed in Table $\ref{tab:2}$. The experiment was set up on a 64-bit Machine with Ubuntu 20.04, Intel® CoreTM i5-7200U CPU @ 2.50GHz × 4, with a GeForce 940MX/PCle/SSE2 graphic card.
 
-Based on the results, DA provides ambitious results on the becnhmark functions. DA outperforms the other algorithms in F2, F8, F15 and F18. The selective performance boosts could be attributed to the optimal voting season. In certain cases the top departments would have saturated and the replacement process might have been ineffective. As it is the case with any algorithm, global optimum search can never be guarenteed.  
+Based on the results, DA provides ambitious results on the becnhmark functions \cite{bf}. DA outperforms the other algorithms in F2, F8, F15 and F18. The selective performance boosts could be attributed to the optimal voting season. In certain cases the top departments would have saturated and the replacement process might have been ineffective. As it is the case with any algorithm, global optimum search can never be guarenteed.  
 
 
 \begin{table*}[!t]
@@ -688,7 +688,43 @@ For any future extensions on this work, the follwing areas can be explored:
 
 \begin{thebibliography}{00}
 \bibitem{chankong} Chankong V., Haimes Y, Thadathil J., Zionts S. (1985), Multiple Criteria Optimization: A State of the Art Review, Decision Making with Multiple Objectives, Lecture Notes in Economics and Mathematical Systems 242, Edited by Y.Y. Haimes, V. Chankong, SpringerVerlag, 36.
+
+\bibitem{liu} H. Liu, F. Gu and Q. Zhang, "Decomposition of a Multiobjective Optimization Problem Into a Number of Simple Multiobjective Subproblems," in IEEE Transactions on Evolutionary Computation, vol. 18, no. 3, pp. 450-455, June 2014, doi: 10.1109/TEVC.2013.2281533. 
+
+\bibitem{Deb} K. Deb, K. Miettinen and S. Chaudhuri, "Toward an Estimation of Nadir Objective Vector Using a Hybrid of Evolutionary and Local Search Approaches," in IEEE Transactions on Evolutionary Computation, vol. 14, no. 6, pp. 821-841, Dec. 2010, doi: 10.1109/TEVC.2010.2041667.
+
+\bibitem{arora} Marler, R.T., Arora, J.S. The weighted sum method for multi-objective optimization: new insights. Struct Multidisc Optim 41, 853–862 (2010). https://doi.org/10.1007/s00158-009-0460-7
+
+\bibitem{ryu} N. Ryu, W. S. Song, Y. Jung and S. Min, "Multi-Objective Topology Optimization of a Magnetic Actuator Using an Adaptive Weight and Tunneling Method," in IEEE Transactions on Magnetics, vol. 55, no. 6, pp. 1-4, June 2019, Art no. 7202504, doi: 10.1109/TMAG.2019.2899893.
+
+\bibitem{sinha} A. Sinha, K. Deb, P. Korhonen and J. Wallenius, "Progressively interactive evolutionary multi-objective optimization method using generalized polynomial value functions," IEEE Congress on Evolutionary Computation, Barcelona, 2010, pp. 1-8, doi: 10.1109/CEC.2010.5586278.
+
+\bibitem{arnold} D. V. Arnold and R. Salomon, "Evolutionary Gradient Search Revisited," in IEEE Transactions on Evolutionary Computation, vol. 11, no. 4, pp. 480-495, Aug. 2007, doi: 10.1109/TEVC.2006.882427.
+
+\bibitem{vikhar} P. A. Vikhar, "Evolutionary algorithms: A critical review and its future prospects," 2016 International Conference on Global Trends in Signal Processing, Information Computing and Communication (ICGTSPICC), Jalgaon, 2016, pp. 261-265, doi: 10.1109/ICGTSPICC.2016.7955308.
+
+\bibitem{swarm} Yan-fei Zhu and Xiong-min Tang, "Overview of swarm intelligence," 2010 International Conference on Computer Application and System Modeling (ICCASM 2010), Taiyuan, 2010, pp. V9-400-V9-403, doi: 10.1109/ICCASM.2010.5623005.
+
+\bibitem{man} K. F. Man, K. S. Tang and S. Kwong, "Genetic algorithms: concepts and applications [in engineering design]," in IEEE Transactions on Industrial Electronics, vol. 43, no. 5, pp. 519-534, Oct. 1996, doi: 10.1109/41.538609.
+
+\bibitem{abdul} W. Abdulal, O. A. Jadaan, A. Jabas, S. Ramachandram, M. Kaiiali and C. R. Rao, "Rank-Based Genetic Algorithm with Limited Iteration for Grid Scheduling," 2009 First International Conference on Computational Intelligence, Communication Systems and Networks, Indore, 2009, pp. 29-34, doi: 10.1109/CICSYN.2009.23.
+
+\bibitem{kita} M. Takahashi and H. Kita, "A crossover operator using independent component analysis for real-coded genetic algorithms," Proceedings of the 2001 Congress on Evolutionary Computation (IEEE Cat. No.01TH8546), Seoul, South Korea, 2001, pp. 643-649 vol. 1, doi: 10.1109/CEC.2001.934452.
+
+\bibitem{im} X. Deng, "Application of Adaptive Genetic Algorithm in Inversion Analysis of Permeability Coefficients," 2008 Second International Conference on Genetic and Evolutionary Computing, Hubei, 2008, pp. 61-65, doi: 10.1109/WGEC.2008.63.
+
+\bibitem{pso} J. Kennedy and R. Eberhart, "Particle swarm optimization," Proceedings of ICNN'95 - International Conference on Neural Networks, Perth, WA, Australia, 1995, pp. 1942-1948 vol.4, doi: 10.1109/ICNN.1995.488968.
+
+\bibitem{gwo} D. Jitkongchuen, P. Phaidang and P. Pongtawevirat, "Grey wolf optimization algorithm with invasion-based migration operation," 2016 IEEE/ACIS 15th International Conference on Computer and Information Science (ICIS), Okayama, 2016, pp. 1-5, doi: 10.1109/ICIS.2016.7550769.
+
+\bibitem{mvo} H. Jia, X. Peng, W. Song, C. Lang, Z. Xing and K. Sun, "Multiverse Optimization Algorithm Based on Lévy Flight Improvement for Multithreshold Color Image Segmentation," in IEEE Access, vol. 7, pp. 32805-32844, 2019, doi: 10.1109/ACCESS.2019.2903345.
+
+\bibitem{cs} M. Naik, M. R. Nath, A. Wunnava, S. Sahany and R. Panda, "A new adaptive Cuckoo search algorithm," 2015 IEEE 2nd International Conference on Recent Trends in Information Systems (ReTIS), Kolkata, 2015, pp. 1-5, doi: 10.1109/ReTIS.2015.7232842.
+
+\bibitem{bf} R. W. Garden and A. P. Engelbrecht, "Analysis and classification of optimisation benchmark functions and benchmark suites," 2014 IEEE Congress on Evolutionary Computation (CEC), Beijing, 2014, pp. 1641-1649, doi: 10.1109/CEC.2014.6900240.
+
 \end{thebibliography}
+
 
 % \begin{thebibliography}{00}
 % \bibitem{b1} G. Eason, B. Noble, and I. N. Sneddon, ``On certain integrals of Lipschitz-Hankel type involving products of Bessel functions,'' Phil. Trans. Roy. Soc. London, vol. A247, pp. 529--551, April 1955.

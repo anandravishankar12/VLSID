@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2020.5.8)  26 SEP 2020 15:47
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2020.5.8)  27 SEP 2020 12:55
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -569,13 +569,13 @@ File: ga.png Graphic file (type png)
 <use ga.png>
 Package pdftex.def Info: ga.png  used on input line 231.
 (pdftex.def)             Requested size: 75.77159pt x 225.63014pt.
- [2 <./ga.png>]
-<struct.png, id=27, 1574.88374pt x 1204.5pt>
+ [2]
+<struct.png, id=26, 1574.88374pt x 1204.5pt>
 File: struct.png Graphic file (type png)
 <use struct.png>
 Package pdftex.def Info: struct.png  used on input line 253.
 (pdftex.def)             Requested size: 223.1977pt x 170.71652pt.
- [3 <./struct.png>]
+ [3 <./ga.png> <./struct.png>]
 LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 3
 40.
 
@@ -591,12 +591,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 375--375
 \OT1/ptm/m/n/8 at $\OML/cmm/m/it/8 x[]$ \OT1/ptm/m/n/8 =
  []
 
-<akleya.png, id=37, 1199.48125pt x 1148.29pt>
+<akleya.png, id=32, 1199.48125pt x 1148.29pt>
 File: akleya.png Graphic file (type png)
 <use akleya.png>
 Package pdftex.def Info: akleya.png  used on input line 417.
 (pdftex.def)             Requested size: 113.5179pt x 108.66817pt.
-<bartelsa.png, id=38, 1199.48125pt x 1153.30875pt>
+<bartelsa.png, id=33, 1199.48125pt x 1153.30875pt>
 File: bartelsa.png Graphic file (type png)
 <use bartelsa.png>
 Package pdftex.def Info: bartelsa.png  used on input line 423.
@@ -606,12 +606,12 @@ Overfull \hbox (31.7937pt too wide) in paragraph at lines 415--427
 []$[]$$[]$ 
  []
 
-<branina.png, id=39, 1752.5475pt x 1204.5pt>
+<branina.png, id=34, 1752.5475pt x 1204.5pt>
 File: branina.png Graphic file (type png)
 <use branina.png>
 Package pdftex.def Info: branina.png  used on input line 434.
 (pdftex.def)             Requested size: 144.54pt x 99.33939pt.
-<braninb.png, id=40, 1695.33376pt x 1196.47pt>
+<braninb.png, id=35, 1695.33376pt x 1196.47pt>
 File: braninb.png Graphic file (type png)
 <use braninb.png>
 Package pdftex.def Info: braninb.png  used on input line 435.
@@ -626,12 +626,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 434--436
 
  []
 
-<egga.png, id=41, 1246.6575pt x 1204.5pt>
+<egga.png, id=36, 1246.6575pt x 1204.5pt>
 File: egga.png Graphic file (type png)
 <use egga.png>
 Package pdftex.def Info: egga.png  used on input line 442.
 (pdftex.def)             Requested size: 113.5179pt x 109.66849pt.
-<eggb.png, id=42, 1251.67625pt x 1204.5pt>
+<eggb.png, id=37, 1251.67625pt x 1204.5pt>
 File: eggb.png Graphic file (type png)
 <use eggb.png>
 Package pdftex.def Info: eggb.png  used on input line 448.
@@ -641,17 +641,19 @@ Overfull \hbox (31.7937pt too wide) in paragraph at lines 440--452
 []$[]$$[]$ 
  []
 
-<rastrigina.png, id=43, 1214.5375pt x 1152.305pt>
+[4 <./akleya.png> <./bartelsa.png> <./branina.png> <./braninb.png> <./egga.png>
+ <./eggb.png>]
+<rastrigina.png, id=52, 1214.5375pt x 1152.305pt>
 File: rastrigina.png Graphic file (type png)
 <use rastrigina.png>
 Package pdftex.def Info: rastrigina.png  used on input line 459.
 (pdftex.def)             Requested size: 90.3375pt x 85.69824pt.
-<rastriginb.png, id=44, 1199.48125pt x 1155.31625pt>
+<rastriginb.png, id=53, 1199.48125pt x 1155.31625pt>
 File: rastriginb.png Graphic file (type png)
 <use rastriginb.png>
 Package pdftex.def Info: rastriginb.png  used on input line 460.
 (pdftex.def)             Requested size: 90.3375pt x 86.99754pt.
-<rastriginc.png, id=45, 1199.48125pt x 1155.31625pt>
+<rastriginc.png, id=54, 1199.48125pt x 1155.31625pt>
 File: rastriginc.png Graphic file (type png)
 <use rastriginc.png>
 Package pdftex.def Info: rastriginc.png  used on input line 461.
@@ -666,17 +668,17 @@ Underfull \hbox (badness 10000) in paragraph at lines 459--462
 
  []
 
-<rosenbrocka.png, id=46, 492.84125pt x 478.78876pt>
+<rosenbrocka.png, id=55, 492.84125pt x 478.78876pt>
 File: rosenbrocka.png Graphic file (type png)
 <use rosenbrocka.png>
 Package pdftex.def Info: rosenbrocka.png  used on input line 467.
 (pdftex.def)             Requested size: 90.3375pt x 87.75629pt.
-<rosenbrockb.png, id=47, 492.84125pt x 478.78876pt>
+<rosenbrockb.png, id=56, 492.84125pt x 478.78876pt>
 File: rosenbrockb.png Graphic file (type png)
 <use rosenbrockb.png>
 Package pdftex.def Info: rosenbrockb.png  used on input line 468.
 (pdftex.def)             Requested size: 90.3375pt x 87.75629pt.
-<rosenbrockc.png, id=48, 492.84125pt x 478.78876pt>
+<rosenbrockc.png, id=57, 492.84125pt x 478.78876pt>
 File: rosenbrockc.png Graphic file (type png)
 <use rosenbrockc.png>
 Package pdftex.def Info: rosenbrockc.png  used on input line 469.
@@ -691,8 +693,33 @@ Underfull \hbox (badness 10000) in paragraph at lines 467--470
 
  []
 
-[4 <./akleya.png> <./bartelsa.png> <./branina.png> <./braninb.png> <./egga.png>
- <./eggb.png>]
+
+Underfull \vbox (badness 3449) has occurred while \output is active []
+
+ [5 <./rastrigina.png> <./rastriginb.png> <./rastriginc.png> <./rosenbrocka.png
+> <./rosenbrockb.png> <./rosenbrockc.png>]
+Underfull \hbox (badness 1668) in paragraph at lines 718--719
+[]\OT1/ptm/m/n/8 D. Jitkongchuen, P. Phaidang and P. Pongtaw-e-vi-rat, "Grey wo
+lf
+ []
+
+
+Underfull \hbox (badness 3746) in paragraph at lines 718--719
+\OT1/ptm/m/n/8 op-ti-miza-tion al-go-rithm with invasion-based mi-gra-tion op-e
+r-a-tion,"
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 718--719
+\OT1/ptm/m/n/8 2016 IEEE/ACIS 15th In-ter-na-tional Con-fer-ence on Com-puter
+ []
+
+
+Underfull \hbox (badness 2591) in paragraph at lines 718--719
+\OT1/ptm/m/n/8 and In-for-ma-tion Sci-ence (ICIS), Okayama, 2016, pp. 1-5, doi:
+
+ []
+
 
 ** Conference Paper **
 Before submitting the final camera ready copy, remember to:
@@ -704,41 +731,39 @@ Before submitting the final camera ready copy, remember to:
  uses only Type 1 fonts and that every step in the generation
  process uses the appropriate paper size.
 
-[5 <./rastrigina.png> <./rastriginb.png> <./rastriginc.png> <./rosenbrocka.png>
- <./rosenbrockb.png> <./rosenbrockc.png>] (./paper.aux) ) 
+[6] (./paper.aux) ) 
 Here is how much of TeX's memory you used:
- 6906 strings out of 481239
- 103912 string characters out of 5920378
- 383302 words of memory out of 5000000
- 22051 multiletter control sequences out of 15000+600000
+ 6924 strings out of 481239
+ 104017 string characters out of 5920378
+ 385362 words of memory out of 5000000
+ 22069 multiletter control sequences out of 15000+600000
  575651 words of font info for 102 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  41i,16n,49p,866b,702s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texlive/te
-xmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texlive/texmf-dist/fonts/type1
-/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/publi
-c/amsfonts/cmextra/cmex8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
-amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfon
-ts/cm/cmmi5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/c
-mmi6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pf
-b></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr
-/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/
-texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/share/texlive/
-texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-di
-st/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts
-/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
-ublic/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
-amsfonts/cm/cmsy6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfont
-s/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
-sy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm
-10.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/sh
-are/texlive/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/share/texlive/te
-xmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/
-type1/urw/times/utmri8a.pfb>
-Output written on paper.pdf (5 pages, 18481885 bytes).
+{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}<
+/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/s
+hare/texlive/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex8.pfb></usr/sha
+re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/tex
+live/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texlive/te
+xmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dis
+t/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts
+/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/
+public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
+amsfonts/cm/cmr5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
+/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7
+.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></u
+sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/sha
+re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texl
+ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/tex
+mf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist
+/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/texlive/texmf-dist/
+fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw
+/times/utmbi8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.
+pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on paper.pdf (6 pages, 18485775 bytes).
 PDF statistics:
- 134 PDF objects out of 1000 (max. 8388607)
- 77 compressed objects within 1 object stream
+ 137 PDF objects out of 1000 (max. 8388607)
+ 79 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  71 words of extra memory for PDF output out of 10000 (max. 10000000)
 
