@@ -6,6 +6,7 @@
 \usepackage{algorithmic}
 \usepackage{graphicx}
 \usepackage{amssymb}
+\usepackage{lipsum}
 \usepackage{algorithm}
 \usepackage{textcomp}
 \usepackage{amsmath}
@@ -24,7 +25,7 @@
     T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
 \begin{document}
 
-\title{Democractic Algorithm: A Novel Approach to Hierarchical Swarm Intelligence\\
+\title{Democratic Algorithm: A Novel Approach to Hierarchical Swarm Intelligence\\
 % {\footnotesize \textsuperscript{*}Note: Sub-titles are not captured in Xplore and
 % should not be used}
 % \thanks{Identify applicable funding agency here. If none, delete this.}
@@ -70,11 +71,12 @@
 \maketitle
 
 \begin{abstract}
-Computational intelligence has produced nature inspired algorithms as the new and popular problem solving tool in diverse fields such as soft computing, functional optimization, data science and machine learning. These algorithms can be further sub-divided, with swarm intelligence, physics-inspired, social, evolutionary algorithms a few noteworthy. In this paper we present Democratic Algorithm (DA) , a social-construct based algorithm heavily inspired from hierarchy swarm intelligence and real life social establishments. Our proposal extends the existing methodology for hierarchical structures by framing experience into a viable component for future applications. A comprehensive study is conducted with 16 benchmark functions and real-life data to cement the competence of the algorithm with DA providing a markup of 2-7.4X of convergence rate. 
+Computational intelligence has produced nature inspired algorithms as the new and popular problem solving tool in multi-objective optimization problems. In this paper we present Democratic Algorithm (DA), a social-construct based algorithm heavily inspired from hierarchy swarm intelligence and real life social establishments. Each candidate is given an equal opportunity to take a key role in the decision making process. Additional enhancements such as dynamism and memory retention capabilities boost the performance of DA. A comprehensive study is conducted with 21 benchmark functions to act as proof-of-concept and lay the groundwork for future works. The results so obtained, cement the competence of DA as it outperforms other algorithms in multiple unimodal and multimodal functions.
+% diverse fields such as soft computing, functional optimization, data science and machine learning. These algorithms can be further sub-divided, with swarm intelligence, physics-inspired, social, evolutionary algorithms a few noteworthy. In this paper we present Democratic Algorithm (DA) , a social-construct based algorithm heavily inspired from hierarchy swarm intelligence and real life social establishments. Our proposal extends the existing methodology for hierarchical structures by framing experience into a viable component for future applications. A comprehensive study is conducted with 16 benchmark functions and real-life data to cement the competence of the algorithm with DA providing a markup of 2-7.4X of convergence rate. 
 \end{abstract}
 
 \begin{IEEEkeywords}
-component, formatting, style, styling, insert
+Optimization, Swarm intelligence, Democratic Algorithm, Memoization, Dynamic Structure
 \end{IEEEkeywords}
 
 \section{Introduction}
@@ -97,110 +99,236 @@ Equation $\ref{eqn:1}$ describes a general MOOP consisting of $\textit{M}$ singl
 
 Usually MOOPs are solved by decomposing them into multiple single-objective optimization problems \cite{liu}. However, the striking difference in this method and directly solving a MOOP lies in the decision space. For a pure MOOP, the multi-dimensional decision space is accompanied with an objective space $\textit{Z}$. For each solution $\textit{x}$, there is a point in the objective space denoted by $\textit{z} = (\textit{z\textsubscript{1}}, \textit{z\textsubscript{2}}, \textit{z\textsubscript{3}}, \dots, \textit{z\textsubscript{M}})$. Hence pure MOOPs optimize a vector \cite{Deb} whereas multiple single-objective optimization problems optimize singular variables. 
 
-\subsection{Orthodox Methods of Solving MOOPs}
+\subsection{Dominance and Pareto Optimality}
 
-The techniques developed in this section describe classical techniques which are based on mathematical and statistical reasoning. These algorithms are rather simplistic and quite intuitive. Some of the noteworthy techniques are discussed here:
-
-\begin{itemize}
-
-\item Weighting Sum Method: 
-
-In this algorithm, the MOOP is decomposed into multiple singular problems and each problem is assigned a weight corresponding to it's respective importance to the global front. The weights must be quantified based on prior information and the singular objective functions must be normalized for proper setting of the weight vector \cite{arora}. Equation $\ref{eqn:2}$ decomposes the MOOP $F\textsubscript{m}(x)$ into $\textit{m}$ single-objective optimization problems and weight vector $w\textsubscript{m}$, subject to constraints mentioned in Equation $\ref{eqn:1}$.
-
-\begin{equation}
-\label{eqn:2}
-Optimize:F\textsubscript{m}(x) =  \sum_{m=1}^{M}w\textsubscript{m}f\textsubscript{m}(x)
-\end{equation}
+Majority of MOOPs revolve around the idea of dominance as conflicts arise between multiple solutions. Consider a MOOP with $\textit{M}$ sub-optimzation problems leading to $\textit{N}$ solutions. For any solution $\textit{i} \in \textit{N}$ to dominate solution $\textit{j} \in \textit{N}$, there are two criteria which must be met.
 
 \begin{itemize}
-\item Advantages:
-\begin{enumerate}
-\item Simple and intuitive
-\end{enumerate}
-\item Disadvantages:
-\begin{enumerate}
-\item Required conversion of minmax problems into 1 type
-\item Difficulity in proper weight vector setting
-\end{enumerate}
+\item The solution $\textit{i}$ must be no worse than $\textit{j}$ in all sub-optimization problems $\textit{f\textsubscript{x}}$ for all $\textit{x} = 1,2 \dots, \textit{M}$
+\item The solution $\textit{i}$ is strictly better than $\textit{j}$ in at least one sub-optimization problem $\textit{f\textsubscript{x}}$ for all $\textit{x} = 1,2 \dots, \textit{M}$
 \end{itemize}
 
-\item Weighted Metric Method:
+This concept, although intuitive, allows for a concrete definition of a solution being "better" than another and assists in searching for the non-dominated solutions. However, an interesting case appears between two solutions, when $\textit{i}$ is better than $\textit{j}$ in one sub-problem where $\textit{j}$ is better than $\textit{i}$ in another. After performing a pairwise comparison and eliminating all the singularly dominated solutions, we have a set of non-dominated solutions called the non-dominated set. Any solution inside this set, is better than any solution outside the set. 
 
-This technique is a general extension of weighting sum method with a varient of combination of multiple objectives \cite{ryu}. Equation $\ref{eqn:3}$ represents this method where $\textit{l\textsubscript{p}}$ is the distance measure between candidate solution $\textit{x}$ and solution $\textit{z\textsuperscript{*}}$, parameter $\textit{p} \in [1,\infty]$. For $\textit{p}$ = 1, weighted metric decomposes into weighting sum method.
+When such a space constitutes the entire space of solutions, the set is called a Global Pareto-Optimal set. By introducing a neighboring constant which allows for some leverage, a Global Pareto-Optimal solution can be converted to a Local Pareto-Optimal solution. Therefore the initial MOOP is now transformed into a task of finding multiple Pareto-Optimal solutions with good diversity in decision variable values. The following section describes the various methods by which MOOPs can be solved. 
 
-\begin{equation}
-\label{eqn:3}
-Optimize:l\textsubscript{p}(x) =  (\sum_{m=1}^{M}w\textsubscript{m}|f\textsubscript{m}(x) - z\textsubscript{m}\textsuperscript{*}|\textsuperscript{p})\textsuperscript{\sufr{1}{p}}
-\end{equation}
+
+% \subsection{Orthodox Methods of Solving MOOPs}
+% 
+% The techniques developed in this section describe classical techniques which are based on mathematical and statistical reasoning. These algorithms are rather simplistic and quite intuitive. Some of the noteworthy techniques are discussed here:
+% 
+% \begin{itemize}
+% 
+% \item Weighting Sum Method: 
+% 
+% In this algorithm, the MOOP is decomposed into multiple singular problems and each problem is assigned a weight corresponding to it's respective importance to the global front. The weights must be quantified based on prior information and the singular objective functions must be normalized for proper setting of the weight vector \cite{arora}. Equation $\ref{eqn:2}$ decomposes the MOOP $F\textsubscript{m}(x)$ into $\textit{m}$ single-objective optimization problems and weight vector $w\textsubscript{m}$, subject to constraints mentioned in Equation $\ref{eqn:1}$.
+% 
+% \begin{equation}
+% \label{eqn:2}
+% Optimize:F\textsubscript{m}(x) =  \sum_{m=1}^{M}w\textsubscript{m}f\textsubscript{m}(x)
+% \end{equation}
+% 
+% \begin{itemize}
+% \item Advantages:
+% \begin{enumerate}
+% \item Simple and intuitive
+% \end{enumerate}
+% \item Disadvantages:
+% \begin{enumerate}
+% \item Required conversion of minmax problems into 1 type
+% \item Difficulity in proper weight vector setting
+% \end{enumerate}
+% \end{itemize}
+% 
+% \item Weighted Metric Method:
+% 
+% This technique is a general extension of weighting sum method with a varient of combination of multiple objectives \cite{ryu}. Equation $\ref{eqn:3}$ represents this method where $\textit{l\textsubscript{p}}$ is the distance measure between candidate solution $\textit{x}$ and solution $\textit{z\textsuperscript{*}}$, parameter $\textit{p} \in [1,\infty]$. For $\textit{p}$ = 1, weighted metric decomposes into weighting sum method.
+% 
+% \begin{equation}
+% \label{eqn:3}
+% Optimize:l\textsubscript{p}(x) =  (\sum_{m=1}^{M}w\textsubscript{m}|f\textsubscript{m}(x) - z\textsubscript{m}\textsuperscript{*}|\textsuperscript{p})\textsuperscript{\sufr{1}{p}}
+% \end{equation}
+% 
+% \begin{itemize}
+% \item Advantages:
+% \begin{enumerate}
+% \item Simple yet generic distance metric
+% \end{enumerate}
+% \item Disadvantages:
+% \begin{enumerate}
+% \item Prerequistive knowledge of individual minima and maxima of each function is required
+% \end{enumerate}
+% \end{itemize}
+% 
+% \item Value Function Method:
+% 
+% In this method, the user must provide a value mapping function $\mathbb{U}:\mathbb{R\textsuperscript{M}} \rightarrow \mathbb{R}$ for all $\textit{M}$ functions. The optimization process is then reduced to Equation $\ref{eqn:4}$ \cite{sinha}, subject to the same constraints as Equation $\ref{eqn:1}$
+% 
+% \begin{equation}
+% \label{eqn:4}
+% Optimize: \mathbb{U}(f(x))
+% \end{equation}
+% 
+% \begin{itemize}
+% \item Advantages:
+% \begin{enumerate}
+% \item Ideal when prior information is available
+% \end{enumerate}
+% \item Disadvantages:
+% \begin{enumerate}
+% \item Problem of over-simplified value mapping function
+% \end{enumerate}
+% \end{itemize}
+% 
+% % This algorithm is one of the simplest way to solve a MOOP due to the intuitive nature, ease of use and elementary mathematical representation. However, there are a number of drawbacks associated with this algorithm such as unreliable mapping leading to difficulties in proper weight configuration and requirment of converting all minimization and maximization problems into 1 common type. 
+% 
+% \end{itemize}
+% 
+% Solving MOOPs using classical methods requires either prior information about the subproblems or assumptions for decomposition. These algorihtms have been put to use in multiple practical applications involving huge sets of internal parameters, which incur an overhead of optimal configuration setting. 
+% 
+\section{Solving MOOPs}
+
+In this section, we provide a brief overview of methods to solve MOOPs and obtain Pareto-optimal solutions. Historically, these methods can be classified into classical and evolutionary techniques. Additional information about these techniques and their sub-classifications are provided in Table $\ref{tab1}$ and $\ref{tab2}$. Every algorithm is set back in one way or the other due to the No Free Lunch Theorem. Our goal in this paper is not create an algorithm which works perfectly for all problems, but to put forth a novel construct which mitigates the drawbacks of it's predecessors. 
+
+\begin{table*}[!b]
+\caption{\textsc{Classical Solving Methods}}
+\label{tab1}
+\centering
+\scalebox{0.9}
+{
+\begin{tabular}{| c | c | c | c |}
+\hline
+\textbf{Subclass} & \textbf{Optimization Equation} & \textbf{Advantages} & \textbf{Disdvantages}\\
+\hline
+ &&&\\
+ Weighting Method & $F\textsubscript{m}(x) =  \sum_{m=1}^{M}w\textsubscript{m}f\textsubscript{m}(x)$ & Simple, Intuitive & No constraints on weights, Not optimal for \\
+ &&&nonconvex problems, Interactive\\
+\hline
+&&&\\
+ $\epsilon$-Contrainst Method & $F\textsubscript{l}(x)$ w.r.t $F\textsubscript{m}(x) \leq \epsilon\textsubscript{m}$ & Ensures Pareto optimality and uniqueness,  & Not scalable, Range requirement,\\
+   &  & Convexity is not necessary & Interactive \\
+ &&&\\
+ \hline 
+ Neutral Compromise Solution & $\frac{F\textsubscript{m}(x) - ((z\textsubscript{i}\textsuperscript{*} + z\textsubscript{i}\textsuperscript{nad})/2)}{z\textsubscript{i}\textsuperscript{nad} - z\textsubscript{i}\textsuperscript{*}}$ & Approximate Solution, Rapid Process  & Weakly Pareto, Utopian and  \\
+  &  &  & Nadir solution required \\
+\hline
+ Weighted Metrics & $(\sum_{m=1}^{M}w\textsubscript{m}|f\textsubscript{m}(x) - z\textsubscript{m}\textsuperscript{*}|\textsuperscript{p})\textsuperscript{\sufr{1}{p}}$ & Smaller feasible region & Nondifferentiable in some cases, \\
+  &  &  & Convexity is required\\
+ \hline
+ &&&\\
+ Value Function Method & $\mathbb{U}(F(x))$ & Excellent results when & Mandatory and Over simplified\\
+   &  & mathematical representation is provided & mapping\\
+ &&&\\
+ \hline
+\end{tabular}
+}
+\end{table*}
+
+\begin{table*}[!b]
+\caption{\textsc{Evolutionary Solving Methods}}
+\label{tab2}
+\centering
+
+{
+\begin{tabular}{| c | c | c |}
+\hline
+\textbf{Subclass}&\textbf{Advantages}&\textbf{Disadvantage}\\
+\hline
+Preference relation&Dominant Pareto guarentee&Required reference point\\
+\hline
+Light Beam Method&Optimal distance crowding&Reference direction threshold\\
+\hline
+Imprecise value function&Solution based ranking&Dominant solutions\\
+\hline
+Biased Crowding&Desired trade-off&Crowding of solutions\\
+\hline
+\end{tabular}
+}
+\end{table*}
+
+A common drawback pattern encountered in the listed techniques is dominance factor. Light Beam method works towards being independent from this factor by leveraging a prior knowledge on the reference direction. Whereas Imprecision value function method takes in a ranking system, but created dominant solutions. 
+
+% 
+% \subsection{Quantified problems in Classical Computation}
+% 
+% The algorithms described in the preceeding section can be classified as either direct search or gradient based search techniques \cite{arnold}. Direct search algorithms user described constriants are utilized in their raw format to guide the solution. Gradient based search techniques use derivatives of the objective function and constraints to guide the solution. However, both these techniques encouter similar problems as described:
+% 
+% \begin{itemize}
+% \item Result is dependent on selection of initial state 
+% \item Tendency to get stuck in local optima
+% \item Lack of genralization due to dependence on problem statement
+% \item Requirement of mathemtical representation 
+% \item Inefficient when it comes to non-differentiable or discontinous problems
+% \item Lack of parallelization in majority of the algorithms
+% \item Time incurred is high due to single search guidance system
+% \end{itemize}
+% 
+% These problems resulted in the development of new fields in Computational Intelligence, namely Evolutionary Algorithms (EA) \cite{vikhar} and Swarm Intelligence (SI) \cite{swarm}. The main motivation for the development of these algorithms is to alleviate the hurdles faced by classical algorithms. 
+% 
+% \subsection{Swarm Intelligence to the Rescue}
+% 
+% SI proposes emulating naturally occuring groups and their behaviour for optimal functioning. $\textit{Swarm}$ refers to a group of disorganized individuals working towards the common goal of finding the global optimum. When viewed seperatley, these individuals are particularly ineffective. However when properly instructed, these individuals transform into a centralized, collective and self-organized entity. When deployed accurately, a dynamic search pattern, better than random search, appears. This intelligence and self-organizing technique is called Swarm intelligence and is depicted in Algorithm $\ref{alg:SI}$.
+% 
+
+% 
+% \subsection{Genetic Modifiers}
+% 
+% Under the umbrella of EA, Genetic Algorithms (GA) \cite{man} has emerged as one of the most popular search and optimization techniques. The core of GA lies in the feedback process, which updates the candidate solutions in accordance with 3 main sub-processes. Figure $\ref{ga}$ summarizes the entire process of GA.
+% 
+% \begin{itemize}
+% \item Selection: This step involves selecting the candidates having the best fitness score. The method used for DA is the rank-based selection \cite{abdul} in which the probability of selection of a chromosome is directly related to the corresponding fitness value. 
+% \item Crossover: The characteristics of the parents selected at the selection stage are intermixed to generate better candidates in the next generation. BLX or Blend Crossover \cite{kita} technique was utilized to have the optimal feature selection. 
+% \item Mutation: As an add-on to the generational transition, random changes are added to add diversity and possibly improve the candidates. Inversion Mutation \cite{im} was applied to introduce a sense of randomness into the process.
+% \end{itemize}
+% 
+% \begin{figure}[!b]
+% \centering
+% \includegraphics[height=7.93cm]{ga.png}
+% \caption{Genetic Algorithm}
+% \label{ga}
+% \end{figure}
+
+\section{Democratic Algorithm (DA)}
+
+In this section we present a novel social-construct based algorithm heavily inspired from swarm intelligence and real life social establishments which provides a solution to the conundrum presented in the previous section. DA deploys multiple candidates in a dynamically structured format into the solution landscape instead of a static master-follower format. The increased competition results in increased desire for current candidates to find the Pareto optimal. 
+
+\subsection{Inspiration}
+The term "Democracy" was coined in Athens, Greece and literally translates to "Strength of the People". The 2 main characteristics borrowed from the social ideology for this algorithm are as follows.
 
 \begin{itemize}
-\item Advantages:
-\begin{enumerate}
-\item Simple yet generic distance metric
-\end{enumerate}
-\item Disadvantages:
-\begin{enumerate}
-\item Prerequistive knowledge of individual minima and maxima of each function is required
-\end{enumerate}
+\item Equal opportunity for any candidate to ascend and claim the global decision making spot
+\item Proportional influence on the decision making process.
+
 \end{itemize}
 
-\item Value Function Method:
+We follow an extended social hierarchical structure to incorporate some fundamentals of SI into this algorithm. The initial population set is divided into five departments: A, B, C, D, E and are arranged as shown in figure $\ref{struct}$.
 
-In this method, the user must provide a value mapping function $\mathbb{U}:\mathbb{R\textsuperscript{M}} \rightarrow \mathbb{R}$ for all $\textit{M}$ functions. The optimization process is then reduced to Equation $\ref{eqn:4}$ \cite{sinha}, subject to the same constraints as Equation $\ref{eqn:1}$
+\begin{figure}[!t]
+\centering
+\includegraphics[height=5cm]{struct.png}
+\caption{Structure of DA}
+\label{struct}
+\end{figure}
 
-\begin{equation}
-\label{eqn:4}
-Optimize: \mathbb{U}(f(x))
-\end{equation}
-
+The division of departments is based on the relative scores obtained against the set fitness function. Candidates belonging to the higher departments dictate the overall global optima searching process whilst guiding and taking advice from the lower departments. Following initialization, there are two main seasons involved in this algorithm.
 \begin{itemize}
-\item Advantages:
-\begin{enumerate}
-\item Ideal when prior information is available
-\end{enumerate}
-\item Disadvantages:
-\begin{enumerate}
-\item Problem of over-simplified value mapping function
-\end{enumerate}
+\item Guiding Season
+\item Voting Season
 \end{itemize}
 
-% This algorithm is one of the simplest way to solve a MOOP due to the intuitive nature, ease of use and elementary mathematical representation. However, there are a number of drawbacks associated with this algorithm such as unreliable mapping leading to difficulties in proper weight configuration and requirment of converting all minimization and maximization problems into 1 common type. 
+In the following subsections, models of the social hierarchy and the seasons are explained, followed by outlining of the entire algorithm.  
 
-\end{itemize}
+\subsection{Guiding Season}
 
-Solving MOOPs using classical methods requires either prior information about the subproblems or assumptions for decomposition. These algorihtms have been put to use in multiple practical applications involving huge sets of internal parameters, which incur an overhead of optimal configuration setting. 
-
-\section{Modern Techniques for solving MOOPs}
-
-In this section, we provide a brief overview of modern techniques which provide a computationally cheaper substitute to classical computation for finding solutions in artificial landscapes.
-
-\subsection{Quantified problems in Classical Computation}
-
-The algorithms described in the preceeding section can be classified as either direct search or gradient based search techniques \cite{arnold}. Direct search algorithms user described constriants are utilized in their raw format to guide the solution. Gradient based search techniques use derivatives of the objective function and constraints to guide the solution. However, both these techniques encouter similar problems as described:
-
-\begin{itemize}
-\item Result is dependent on selection of initial state 
-\item Tendency to get stuck in local optima
-\item Lack of genralization due to dependence on problem statement
-\item Requirement of mathemtical representation 
-\item Inefficient when it comes to non-differentiable or discontinous problems
-\item Lack of parallelization in majority of the algorithms
-\item Time incurred is high due to single search guidance system
-\end{itemize}
-
-These problems resulted in the development of new fields in Computational Intelligence, namely Evolutionary Algorithms (EA) \cite{vikhar} and Swarm Intelligence (SI) \cite{swarm}. The main motivation for the development of these algorithms is to alleviate the hurdles faced by classical algorithms. 
-
-\subsection{Swarm Intelligence to the Rescue}
-
-SI proposes emulating naturally occuring groups and their behaviour for optimal functioning. $\textit{Swarm}$ refers to a group of disorganized individuals working towards the common goal of finding the global optimum. When viewed seperatley, these individuals are particularly ineffective. However when properly instructed, these individuals transform into a centralized, collective and self-organized entity. When deployed accurately, a dynamic search pattern, better than random search, appears. This intelligence and self-organizing technique is called Swarm intelligence and is depicted in Algorithm $\ref{alg:SI}$.
+This phase has the sole purpose of finding the optimal solution. Candidates belonging to the highest department are responsible for finding the solution. The other candidates act as advisers which help maintain the social structure and prevent the search process from falling into local optima. In order to introduce a dynamic factor the search process, the solutions obtained by the top departments are continously stored in a table for any future reference. The updation of the current position is done based a a weighted sum of the current position of all the departments. Based on the difference between the solution provided and the true solution, the top department's reqard score is either incremented or decremented by 1. The algorithm is depicted in Algorithm $\ref{alg:gs}$.
 
 \begin{algorithm}[!t]
 \footnotesize
-\caption{Swarm Intelligence}
-\label{alg:SI}
+\caption{Guiding Season}
+\label{alg:gs}
 \begin{algorithmic}[1]
-\STATE \textbf{Input:} Swarm population size $\textit{n}$, Set of stopping criteria $\lambda\textsubscript{i}$, fitness function $\textit{f}$
-\STATE Create a Swarm of candidate solutions $\textit{S}$ of size $\textit{n}$ 
+\STATE \textbf{Input:} Population size $\textit{n}$, Set of stopping criteria $\lambda\textsubscript{i}$, fitness function $\textit{f}$
+\STATE Create candidate solutions $\textit{S}$ of size $\textit{n}$ 
 \FOR{Each candidate $\textit{s\textsubscript{i}}$ in $\textit{S}$}
 \STATE Apply $\textit{f}$ on $\textit{s\textsubscript{i}}$
 \ENDFOR
@@ -216,66 +344,15 @@ SI proposes emulating naturally occuring groups and their behaviour for optimal 
 \end{algorithmic}
 \end{algorithm}
 
-\subsection{Genetic Modifiers}
-
-Under the umbrella of EA, Genetic Algorithms (GA) \cite{man} has emerged as one of the most popular search and optimization techniques. The core of GA lies in the feedback process, which updates the candidate solutions in accordance with 3 main sub-processes. Figure $\ref{ga}$ summarizes the entire process of GA.
-
-\begin{itemize}
-\item Selection: This step involves selecting the candidates having the best fitness score. The method used for DA is the rank-based selection \cite{abdul} in which the probability of selection of a chromosome is directly related to the corresponding fitness value. 
-\item Crossover: The characteristics of the parents selected at the selection stage are intermixed to generate better candidates in the next generation. BLX or Blend Crossover \cite{kita} technique was utilized to have the optimal feature selection. 
-\item Mutation: As an add-on to the generational transition, random changes are added to add diversity and possibly improve the candidates. Inversion Mutation \cite{im} was applied to introduce a sense of randomness into the process.
-\end{itemize}
-
-\begin{figure}[!b]
-\centering
-\includegraphics[height=7.93cm]{ga.png}
-\caption{Genetic Algorithm}
-\label{ga}
-\end{figure}
-
-\section{Democratic Algorithm (DA)}
-
-In this section we present DA, a novel social-construct based algorithm heavily inspired from swarm intelligence and real life social establishments. 
-
-\subsection{Inspiration}
-The term "Democracy" was coined in Athens, Greece and literally translates to "Strength of the People". The 2 main characteristics borrowed from the social ideology for this algorithm are as follows.
-
-\begin{itemize}
-\item Equal opportunity for any candidate to ascend and claim the global decision making spot
-\item Proportional influence on the decision making process.
-
-\end{itemize}
-
-We follow an extended social hierarchical structure to incorporate some fundamentals of SI into this algorithm. The initial population set is divided into five departments: A, B, C, D, E and are arranged as shown in figure $\ref{struct}$.
-
-\begin{figure}[!t]
-\centering
-\includegraphics[height=6cm]{struct.png}
-\caption{Structure of DA}
-\label{struct}
-\end{figure}
-
-The division of departments is based on the relative scores obtained against the set fitness function. Candidates belonging to the higher departments dictate the overall global optima searching process whilst guiding and taking advice from the lower departments. Following initialization, there are two main seasons involved in this algorithm.
-\begin{itemize}
-\item Guiding Season
-\item Voting Season
-\end{itemize}
-
-In the following subsections, models of the social hierarchy and the seasons are explained, followed by outlining of the entire algorithm.  
-
-\subsection{Guiding Season}
-
-This phase has the sole purpose of finding the optimal solution. Candidates belonging to the highest department are responsible for finding the solution. The other candidates act as advisers which help maintain the social structure and prevent the search process from falling into local optima. In order to introduce a dynamic factor the search process, the solutions obtained by the top departments are continously stored in a table for any future reference. The updation of the current position is done based a a weighted sum of the current position of all the departments. Based on the difference between the solution provided and the true solution, the top department's reqard score is either incremented or decremented by 1. 
-
 \subsection{Voting Season}
 
 After a set time period $\textit{T}$ if the total reward score does not exceed a threshold $\lambda$ then the top department is replaced by the one just below it. If $\lambda$ is exceeded, then the next problem is loaded with the current configuration.
 
-The entire process of guiding and voting is displayed in Algorithm $\ref{alg:da}$.
+The entire process of the voting season is displayed in Algorithm $\ref{alg:da}$.
 
 \begin{algorithm}[!t]
 \footnotesize
-\caption{DA pseudocode}
+\caption{Voting Season}
 \label{alg:da}
 \begin{algorithmic}[1]
 \STATE \textbf{Input:} Population size $\textit{n}$, random vector set $\vec{r\textsubscript{1,j}}$, $\vec{r\textsubscript{2,j}} \in$ [0,1], weight vector $\vec{w}$, initial estimate of global optimum $\textit{X\textsubscript{g}}$, time period $\textit{T}$, threshold $\lambda$, fitness function $\textit{f}$, coefficient vector sets $\vec{A\textsubscript{j}}$, $\vec{C\textsubscript{j}}$ and $\vec{a\textsubscript{j}}$
@@ -322,7 +399,7 @@ The entire process of guiding and voting is displayed in Algorithm $\ref{alg:da}
 
 \subsection{Key points}
 
-Based on the mathematical representation, the following observations can be made:
+From a mathematical point of view, both the structure and the search processes evolve over time with feedback. For each search, a lookup is conducted by candidate $\textit{c}$ in table $\textit{H}$. If not found, a solution $\textit{x\textsubscript{0}}$ is assumed as the initial point and the search of optimum solution $\textit{x\textsubscript{1}}$. To escape the local optimum, a penalty is added to the fitness function $\textit{f}$ such that the resulting fitness function h allows local search to escape. A new local search is started from $\textit{x\textsubscript{1}}$ using the modified fitness function $\textit{f}$. Search continues until a termination criterion is met. Based on the representation, the following observations can be made:
 \begin{itemize}
 \item The updation process occurs at an individual and departmental level to save the best solutions obtained so far
 \item The parameters $\vec{A}$ and $\vec{C}$ assist the solutions to have higher dimensionality
@@ -348,28 +425,28 @@ Based on the results, DA provides ambitious results on the becnhmark functions \
 \centering
 \scalebox{0.9}
 {
-\begin{tabular}{| >{\arraybackslash}m{0.88in} | c | c | >{\arraybackslash}m{0.4in} | c | >{\arraybackslash}m{1in} |}
+\begin{tabular}{| >{\arraybackslash}m{0.88in} | c | c | >{\arraybackslash}m{0.4in} | c | >{\arraybackslash}m{1in} | c |}
 \hline
-Function & ID & Formula & Modality & Range & Minimum Value \\
+Function & ID & Formula & Modality & Range & Minimum Value & Department \\
 \hline
-Matyas & F1 & $0.26(x\textsubscript{2} + y\textsubscript{2}) - 0.48xy$ & Uni & [-10,10] & 0 at $x\textsuperscript{*}$ = (0,0)\\
-Booth & F2 & $(x + 2y - 7)\textsuperscript{2} + (2x + y - 5)\textsuperscript{2}$ & Uni & [-10,10] & 0 at $x\textsuperscript{*}$ = (1,3)\\
-Bohachevsky & F3 & $x\textsuperscript{2} + 2y\textsuperscript{2} -0.3cos(3\pi x)-0.4cos(4\pi y)+0.7$ & Uni & [-100,100] & 0 at $x\textsuperscript{*}$ = (0,0)\\
-Gramacy and Lee & F4 & $\frac{sin(10\pi x)}{2x} + (x-1)\textsuperscript{4}$ & Uni & [-0.5,2.5] & -0.869011134989500 at $x\textsuperscript{*}$ = (0.548563444114526)\\
-Leon & F5 & $100(y-x\textsuperscript{3})\textsuperscript{2}$ + $(1-x)\textsuperscript{2}$ & Uni & [-10,10] & 0 at $x\textsuperscript{*}$ = (1,1)\\
-Ackley & F6 & $-20 exp(-0.2 \sqrt{\frac{1}{n} \sum_{i=1}^n x_i^2}) - exp(\frac{1}{n} \sum_{i=1}^n cos(2\pi x_i)) + 20 + e$ & Multi & [-32,32] & 0 at $x\textsuperscript{*}$ = (0,0)\\
-Bartels & F7 & $|x\textsuperscript{2} + y\textsuperscript{2} + xy| + |sin(x)| + |cos(y)|$ & Multi & [-500,500], [-500,500] & 1 at $x\textsuperscript{*}$ = (0,0)\\
-Branin & F8 & $a(x\textsubscript{2} - bx\textsubscript{1}\textsuperscript{2} + cx\textsubscript{1} - r)\textsuperscript{2}$ + $s(1-t)cos(x\textsubscript{1})$ + s & Multi & [-5,10], [0,15] & 0.397887 at $x\textsuperscript{*}$ = (-$\pi$, 12.2.275)\\
-Egg Crate & F9 & $x\textsuperscript{2}$ + $y\textsuperscript{2}$ + $25(sin\textsuperscript{2}(x) + cos\textsuperscript{2}(x))$ & Multi & [-5,5] & 0 at $x\textsuperscript{*}$ = (0,0)\\
-Qing & F10 & $\sum_{i=1}^{n}(x^2-i)^2$ & Multi & [-500,500] & 0 at $x\textsuperscript{*}$ = ($\pm\sqrt{i}$)\\
-Rastrigin & F11 & $10n + \sum_{i=1}^{n}(x_i^2 - 10cos(2\pi x_i))$ & Multi & [-5.12,5.12], [-500,500] & 0 at $x\textsuperscript{*}$ = (0,0)\\
-Rosenbrock & F12 & $\sum_{i=1}^{n}[b (x_{i+1} - x_i^2)^ 2 + (a - x_i)^2]$ & Multi & [-5.12,5.12], [-5,10] & 0 at $x\textsuperscript{*}$ = (1)\\
-Bird & F13 & $sin(x)e\textsuperscript{(1-cos(y))^2}+cos(y)e\textsuperscript{(1-sin(x))^2}+(x-y)\textsubscript{2}$ & Multi & [-2$\pi$, 2$\pi$] & -106.764537 at $x\textsuperscript{*}$ = (4.70104,3.15294), (-1.58214,-3.13024)\\
-Powell Sum & F14 & $\sum_{i=1}^{n}|x_i|^{i+1}$ & Multi & [-1,1] & 0 at $x\textsuperscript{*}$ = 0\\
-Schaffer & F15 & $0.5 + \frac{sin\textsuperscript{2}(x\textsuperscript{2}-y\textsuperscript{2})-0.5}{(1+0.001(x\textsuperscript{2}+x\textsuperscript{2}))\textsuperscript{2}}$ & Multi & [-100,100] & 0 at $x\textsuperscript{*}$ = (0,0)\\
-Shubert & F16 & $\prod_{i=1}^{n}{\left(\sum_{j=1}^5{ cos((j+1)x_i+j)}\right)}$ & Multi & [-10,10] & -186.7309 \\
-Happy Cat & F17 & $\left[\left(||\textbf{x}||^2 - n\right)^2\right]^\alpha + \frac{1}{n}\left(\frac{1}{2}||\textbf{x}||^2+\sum_{i=1}^{n}x_i\right)+\frac{1}{2}$ & Multi & [-2,2] & 0 at $x\textsuperscript{*}$ = (-1) \\
-Alpine & F18 & $\prod_{i=1}^{n}\sqrt{x_i}sin(x_i)$ & Multi & [0,10] & 2.808 at $x\textsuperscript{*}$ = (7.917) \\
+Matyas & F1 & $0.26(x\textsubscript{2} + y\textsubscript{2}) - 0.48xy$ & Uni & [-10,10] & 0 at $x\textsuperscript{*}$ = (0,0) & A\\
+Booth & F2 & $(x + 2y - 7)\textsuperscript{2} + (2x + y - 5)\textsuperscript{2}$ & Uni & [-10,10] & 0 at $x\textsuperscript{*}$ = (1,3) & A\\
+Bohachevsky & F3 & $x\textsuperscript{2} + 2y\textsuperscript{2} -0.3cos(3\pi x)-0.4cos(4\pi y)+0.7$ & Uni & [-100,100] & 0 at $x\textsuperscript{*}$ = (0,0) & A\\
+Gramacy and Lee & F4 & $\frac{sin(10\pi x)}{2x} + (x-1)\textsuperscript{4}$ & Uni & [-0.5,2.5] & -0.869 at $x\textsuperscript{*}$ = (0.5485) & A\\
+Leon & F5 & $100(y-x\textsuperscript{3})\textsuperscript{2}$ + $(1-x)\textsuperscript{2}$ & Uni & [-10,10] & 0 at $x\textsuperscript{*}$ = (1,1) & B\\
+Ackley & F6 & $-20 exp(-0.2 \sqrt{\frac{1}{n} \sum_{i=1}^n x_i^2}) - exp(\frac{1}{n} \sum_{i=1}^n cos(2\pi x_i)) + 20 + e$ & Multi & [-32,32] & 0 at $x\textsuperscript{*}$ = (0,0) & A\\
+Bartels & F7 & $|x\textsuperscript{2} + y\textsuperscript{2} + xy| + |sin(x)| + |cos(y)|$ & Multi & [-500,500], [-500,500] & 1 at $x\textsuperscript{*}$ = (0,0) & A\\
+Branin & F8 & $a(x\textsubscript{2} - bx\textsubscript{1}\textsuperscript{2} + cx\textsubscript{1} - r)\textsuperscript{2}$ + $s(1-t)cos(x\textsubscript{1})$ + s & Multi & [-5,10], [0,15] & 0.397887 at $x\textsuperscript{*}$ = (-$\pi$, 12.275) & B\\
+Egg Crate & F9 & $x\textsuperscript{2}$ + $y\textsuperscript{2}$ + $25(sin\textsuperscript{2}(x) + cos\textsuperscript{2}(x))$ & Multi & [-5,5] & 0 at $x\textsuperscript{*}$ = (0,0) & B\\
+Qing & F10 & $\sum_{i=1}^{n}(x^2-i)^2$ & Multi & [-500,500] & 0 at $x\textsuperscript{*}$ = ($\pm\sqrt{i}$) & A\\
+Rastrigin & F11 & $10n + \sum_{i=1}^{n}(x_i^2 - 10cos(2\pi x_i))$ & Multi & [-5.12,5.12], [-500,500] & 0 at $x\textsuperscript{*}$ = (0,0) & C\\
+Rosenbrock & F12 & $\sum_{i=1}^{n}[b (x_{i+1} - x_i^2)^ 2 + (a - x_i)^2]$ & Multi & [-5.12,5.12], [-5,10] & 0 at $x\textsuperscript{*}$ = (1) & C\\
+Bird & F13 & $sin(x)e\textsuperscript{(1-cos(y))^2}+cos(y)e\textsuperscript{(1-sin(x))^2}+(x-y)\textsubscript{2}$ & Multi & [-2$\pi$, 2$\pi$] & -106.76 at $x\textsuperscript{*}$ = (4.70104,3.1529), (-1.58214,-3.1302) & A\\
+Powell Sum & F14 & $\sum_{i=1}^{n}|x_i|^{i+1}$ & Multi & [-1,1] & 0 at $x\textsuperscript{*}$ = 0 & A\\
+Schaffer & F15 & $0.5 + \frac{sin\textsuperscript{2}(x\textsuperscript{2}-y\textsuperscript{2})-0.5}{(1+0.001(x\textsuperscript{2}+x\textsuperscript{2}))\textsuperscript{2}}$ & Multi & [-100,100] & 0 at $x\textsuperscript{*}$ = (0,0) & B\\
+Shubert & F16 & $\prod_{i=1}^{n}{\left(\sum_{j=1}^5{ cos((j+1)x_i+j)}\right)}$ & Multi & [-10,10] & -186.7309  & A\\
+Happy Cat & F17 & $\left[\left(||\textbf{x}||^2 - n\right)^2\right]^\alpha + \frac{1}{n}\left(\frac{1}{2}||\textbf{x}||^2+\sum_{i=1}^{n}x_i\right)+\frac{1}{2}$ & Multi & [-2,2] & 0 at $x\textsuperscript{*}$ = (-1)  & A\\
+Alpine & F18 & $\prod_{i=1}^{n}\sqrt{x_i}sin(x_i)$ & Multi & [0,10] & 2.808 at $x\textsuperscript{*}$ = (7.917)  & B\\
 \hline
 \end{tabular}
 }
@@ -409,67 +486,111 @@ Alpine & F18 & $\prod_{i=1}^{n}\sqrt{x_i}sin(x_i)$ & Multi & [0,10] & 2.808 at $
 }
 \end{table*}
 
-The plots for F3 and F6 have been shown in Figures $\ref{fig:sfig1}$ and $\ref{fig:sfig2}$. For these two functions, the initial top department was capable of producing acceptable results. Due to the acceptance, the voting season never arrived and the process halted. 
+The plots for F1, F2, F3, F6, F15 and F17 have been shown in Figures $\ref{figur:1}$, $\ref{figur:2}$, $\ref{figur:3}$, $\ref{figur:4}$, $\ref{figur:5}$ and $\ref{figur:6}$. For these functions, the initial top department was capable of producing acceptable results. Due to the acceptance, the voting season never arrived and the process terminated. \\
+% 
+% \begin{figure}[!t]
+% \begin{subfigure}{.275\textwidth}
+%   \centering
+%   \includegraphics[width=.8\linewidth]{akleya.png}
+%   \caption{Ackley}
+%   \label{fig:sfig1}
+% \end{subfigure}%
+% \begin{subfigure}{.275\textwidth}
+%   \centering
+%   \includegraphics[width=.8\linewidth]{bartelsa.png}
+%   \caption{Bartels}
+%   \label{fig:sfig2}
+% \end{subfigure}
+% \caption{Departmant A Dominance}
+% \label{fig:fig}
+% \end{figure}
+% 
+The plots for F8, F10 and F18 have been shown in Figures $\ref{figur:7}$, $\ref{figur:8}$, $\ref{figur:9}$, $\ref{figur:10}$, $\ref{figur:11}$ and $\ref{figur:12}$. For these two functions, the initial top department was inapable of producing acceptable results. In the following voting season the total reward did not exceed $\lambda$ and hence B dominance started. 
 
-\begin{figure}[!t]
-\begin{subfigure}{.275\textwidth}
+The plots for F11 and F12 have been shown in Figures $\ref{figur:13}$, $\ref{figur:14}$, $\ref{figur:15}$, $\ref{figur:16}$, $\ref{figur:17}$ and $\ref{figur:18}$. For these two functions, both, the initial top department and the subsequent leaders, were incapable of producing acceptable results. Due to the acceptance, the top departments were voted out after two voting seasons. Department C is promoted and it performs better due to the improved structure and the experience accumulated by the previous top departments.\\
+% 
+% \begin{figure}[!t]
+% \subfloat[Branin-A]{\includegraphics[width = 2in]{branina.png}} 
+% \subfloat[Branin-B]{\includegraphics[width = 1.9in]{braninb.png}}\\
+% \caption{}
+% \label{fig:sfig3}
+% \end{figure}
+% \begin{figure}[!t]
+% \begin{subfigure}{.275\textwidth}
+%   \centering
+%   \includegraphics[width=.8\linewidth]{egga.png}
+%   \caption{Egg Crate-A}
+%   \label{fig:sfig4}
+% \end{subfigure}%
+% \begin{subfigure}{.275\textwidth}
+%   \centering
+%   \includegraphics[width=.8\linewidth]{eggb.png}
+%   \caption{Egg Crate-B}
+%   \label{fig:sfig5}
+% \end{subfigure}
+% \caption{Departmant B Dominance}
+% \label{fig:sfig6}
+% \end{figure}
+% 
+% The plots for F11 and F12 have been shown in Figures $\ref{fig:sfig7}$ and $\ref{fig:sfig8}$. For these two functions, both, the initial top department and the subsequent leaders, were incapable of producing acceptable results. Due to the acceptance, the top departments were voted out after two voting seasons. Department C is promoted and it performs better due to the improved structure and the experience accumulated by the previous top departments.
+% 
+% \begin{figure}[!t]
+% \subfloat[Rastrigin-A]{\includegraphics[width = 1.25in]{rastrigina.png}} 
+% \subfloat[Rastrigin-B]{\includegraphics[width = 1.25in]{rastriginb.png}}
+% \subfloat[Rastrigin-C]{\includegraphics[width = 1.25in]{rastriginc.png}}\\
+% \caption{}
+% \label{fig:sfig7}
+% \end{figure}
+% 
+% \begin{figure}[!t]
+% \subfloat[Rosenbrock-A]{\includegraphics[width = 1.25in]{rosenbrocka.png}} 
+% \subfloat[Rosenbrock-B]{\includegraphics[width = 1.25in]{rosenbrockb.png}}
+% \subfloat[Rosenbrock-C]{\includegraphics[width = 1.25in]{rosenbrockc.png}}\\
+% \caption{Department C Dominance}
+% \label{fig:sfig8}
+% \end{figure}
+
+\begin{figure}[htp]
   \centering
-  \includegraphics[width=.8\linewidth]{akleya.png}
-  \caption{Akleya}
-  \label{fig:sfig1}
-\end{subfigure}%
-\begin{subfigure}{.275\textwidth}
+  \label{figur}\caption{Department A Dominant}
+
+  \subfloat[Ackley]{\label{figur:1}\includegraphics[width=50mm]{ackley.png}}
+  \subfloat[Bohachevskyn]{\label{figur:2}\includegraphics[width=50mm]{boha.png}}
+  \\
+  \subfloat[Booth]{\label{figur:3}\includegraphics[width=50mm]{booth.png}}
+  \subfloat[Matyas]{\label{figur:4}\includegraphics[width=50mm]{matyas.png}}
+  \\
+  \subfloat[Schaffern]{\label{figur:5}\includegraphics[width=50mm]{schaffern.png}}
+  \subfloat[Happy Cat]{\label{figur:6}\includegraphics[width=43.5mm]{happycat.png}}
+\end{figure}
+
+\begin{figure}[htp]
   \centering
-  \includegraphics[width=.8\linewidth]{bartelsa.png}
-  \caption{Bartels}
-  \label{fig:sfig2}
-\end{subfigure}
-\caption{Departmant A Dominance}
-\label{fig:fig}
+  \label{figur}\caption{Department B Dominant}
+
+  \subfloat[Alpine-A]{\label{figur:7}\includegraphics[width=45mm]{alpinea.png}}
+  \subfloat[Alpine-B]{\label{figur:8}\includegraphics[width=45mm]{alpineb.png}}
+  \\
+  \subfloat[Qing-A]{\label{figur:9}\includegraphics[width=37mm]{qinga.png}}
+  \subfloat[Qing-B]{\label{figur:10}\includegraphics[width=37mm]{qingb.png}}
+  \\
+  \subfloat[Branin-A]{\label{figur:11}\includegraphics[width=45mm]{branina.png}}
+  \subfloat[Branin-B]{\label{figur:12}\includegraphics[width=45mm]{braninb.png}}
 \end{figure}
 
-The plots for F8 and F9 have been shown in Figures $\ref{fig:sfig3}$ and $\ref{fig:sfig6}$. For these two functions, the initial top department was inapable of producing acceptable results. In the following voting season the total reward did not exceed $\lambda$ and hence B dominance started. 
-
-\begin{figure}[!t]
-\subfloat[Branin-A]{\includegraphics[width = 2in]{branina.png}} 
-\subfloat[Branin-B]{\includegraphics[width = 1.9in]{braninb.png}}\\
-\caption{}
-\label{fig:sfig3}
-\end{figure}
-\begin{figure}[!t]
-\begin{subfigure}{.275\textwidth}
+\begin{figure*}[htp]
   \centering
-  \includegraphics[width=.8\linewidth]{egga.png}
-  \caption{Egg Crate-A}
-  \label{fig:sfig4}
-\end{subfigure}%
-\begin{subfigure}{.275\textwidth}
-  \centering
-  \includegraphics[width=.8\linewidth]{eggb.png}
-  \caption{Egg Crate-B}
-  \label{fig:sfig5}
-\end{subfigure}
-\caption{Departmant B Dominance}
-\label{fig:sfig6}
-\end{figure}
+  \label{figur}\caption{Department C Dominant}
 
-The plots for F11 and F12 have been shown in Figures $\ref{fig:sfig7}$ and $\ref{fig:sfig8}$. For these two functions, both, the initial top department and the subsequent leaders, were incapable of producing acceptable results. Due to the acceptance, the top departments were voted out after two voting seasons. Department C is promoted and it performs better due to the improved structure and the experience accumulated by the previous top departments.
-
-\begin{figure}[!t]
-\subfloat[Rastrigin-A]{\includegraphics[width = 1.25in]{rastrigina.png}} 
-\subfloat[Rastrigin-B]{\includegraphics[width = 1.25in]{rastriginb.png}}
-\subfloat[Rastrigin-C]{\includegraphics[width = 1.25in]{rastriginc.png}}\\
-\caption{}
-\label{fig:sfig7}
-\end{figure}
-
-\begin{figure}[!t]
-\subfloat[Rosenbrock-A]{\includegraphics[width = 1.25in]{rosenbrocka.png}} 
-\subfloat[Rosenbrock-B]{\includegraphics[width = 1.25in]{rosenbrockb.png}}
-\subfloat[Rosenbrock-C]{\includegraphics[width = 1.25in]{rosenbrockc.png}}\\
-\caption{Department C Dominance}
-\label{fig:sfig8}
-\end{figure}
+  \subfloat[Alpine-A]{\label{figur:13}\includegraphics[width=45mm]{rastrigina.png}}
+  \subfloat[Alpine-B]{\label{figur:14}\includegraphics[width=45mm]{rastriginb.png}}
+  \subfloat[Alpine-B]{\label{figur:15}\includegraphics[width=45mm]{rastriginc.png}}
+  \\
+  \subfloat[Qing-A]{\label{figur:16}\includegraphics[width=45mm]{rosenbrocka.png}}
+  \subfloat[Qing-B]{\label{figur:17}\includegraphics[width=45mm]{rosenbrockb.png}}
+  \subfloat[Alpine-B]{\label{figur:18}\includegraphics[width=45mm]{rosenbrockc.png}}
+  \\
+\end{figure*}
 
 For any future extensions on this work, the follwing areas can be explored:
 
@@ -478,7 +599,7 @@ For any future extensions on this work, the follwing areas can be explored:
 \item Increase the number of parameters for improved model performance.
 \item Generate a framework to decide on the number of departments.
 \item Decrease the complexity of the algorithm by improving the table updation.
-\item Work out multiple function inputs parallely.
+\item Introduction of concurrency.
 \end{itemize}
 % This document is a model and instructions for \LaTeX.
 % Please observe the conference page limits. 
