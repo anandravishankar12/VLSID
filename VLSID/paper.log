@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2020.5.8)  29 SEP 2020 18:37
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2020.5.8)  29 SEP 2020 21:56
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -525,14 +525,7 @@ Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1368.
 Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1369.
 Package xcolor Info: Model `Gray' substituted by `gray' on input line 1370.
 Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
-) (./paper.aux
-
-LaTeX Warning: Label `figur' multiply defined.
-
-
-LaTeX Warning: Label `figur' multiply defined.
-
-)
+) (./paper.aux)
 \openout1 = `paper.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 28.
@@ -549,7 +542,6 @@ LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 28.
 LaTeX Font Info:    ... okay on input line 28.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 28.
 LaTeX Font Info:    ... okay on input line 28.
-
 -- Lines per column: 56 (exact).
 (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -602,178 +594,201 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 <struct.png, id=16, 1574.88374pt x 1204.5pt>
 File: struct.png Graphic file (type png)
 <use struct.png>
-Package pdftex.def Info: struct.png  used on input line 313.
+Package pdftex.def Info: struct.png  used on input line 202.
 (pdftex.def)             Requested size: 185.99808pt x 142.26378pt.
  [2 <./struct.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 414--415
-
- []
-
-[3]
-
-Package amsmath Warning: Foreign command \atopwithdelims;
-(amsmath)                \frac or \genfrac should be used instead
-(amsmath)                 on input line 452.
-
-LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 4
-86.
-(/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1ptm.fd
-File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
-)
-Underfull \hbox (badness 3701) in paragraph at lines 522--522
+Underfull \hbox (badness 3701) in paragraph at lines 327--327
 []|\OT1/ptm/m/n/8 0.39 at $\OML/cmm/m/it/8 x[]$ \OT1/ptm/m/n/8 = (-$\OML/cmm/m/
 it/8 ^^Y$\OT1/ptm/m/n/8 ,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 522--522
+Underfull \hbox (badness 10000) in paragraph at lines 327--327
 []|\OT1/ptm/m/n/8 -106.76 at $\OML/cmm/m/it/8 x[]$ \OT1/ptm/m/n/8 =
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 522--522
+Underfull \hbox (badness 10000) in paragraph at lines 327--327
 \OT1/ptm/m/n/8 (4.70,3.15),(-1.58,-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 580--622
+Underfull \hbox (badness 10000) in paragraph at lines 337--339
 
  []
 
-<ackley.png, id=36, 1580.90625pt x 1196.47pt>
+
+Package amsmath Warning: Foreign command \atopwithdelims;
+(amsmath)                \frac or \genfrac should be used instead
+(amsmath)                 on input line 380.
+
+[3]
+LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 4
+19.
+ (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1ptm.fd
+File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
+) [4]
+Underfull \hbox (badness 10000) in paragraph at lines 463--465
+
+ []
+
+<ackley.png, id=40, 1433.355pt x 1123.19624pt>
 File: ackley.png Graphic file (type png)
 <use ackley.png>
-Package pdftex.def Info: ackley.png  used on input line 627.
-(pdftex.def)             Requested size: 142.26378pt x 107.6594pt.
-<boha.png, id=37, 1597.97pt x 1199.48125pt>
+Package pdftex.def Info: ackley.png  used on input line 514.
+(pdftex.def)             Requested size: 85.13896pt x 66.70332pt.
+<boha.png, id=41, 1439.3775pt x 1127.21124pt>
 File: boha.png Graphic file (type png)
 <use boha.png>
-Package pdftex.def Info: boha.png  used on input line 628.
-(pdftex.def)             Requested size: 142.26378pt x 106.77728pt.
-
-Overfull \hbox (32.52756pt too wide) in paragraph at lines 627--629
- [][][] 
- []
-
-<booth.png, id=38, 1651.16875pt x 1191.45125pt>
+Package pdftex.def Info: boha.png  used on input line 520.
+(pdftex.def)             Requested size: 85.13896pt x 66.66656pt.
+<booth.png, id=42, 1534.73375pt x 1117.17375pt>
 File: booth.png Graphic file (type png)
 <use booth.png>
-Package pdftex.def Info: booth.png  used on input line 630.
-(pdftex.def)             Requested size: 142.26378pt x 102.6446pt.
-<matyas.png, id=39, 1597.97pt x 1197.47375pt>
+Package pdftex.def Info: booth.png  used on input line 526.
+(pdftex.def)             Requested size: 85.13896pt x 61.96466pt.
+<matyas.png, id=43, 1429.34pt x 1128.215pt>
 File: matyas.png Graphic file (type png)
 <use matyas.png>
-Package pdftex.def Info: matyas.png  used on input line 631.
-(pdftex.def)             Requested size: 142.26378pt x 106.59857pt.
-
-Overfull \hbox (32.52756pt too wide) in paragraph at lines 630--632
- [][][] 
- []
-
-<schaffern.png, id=40, 1632.0975pt x 1194.4625pt>
+Package pdftex.def Info: matyas.png  used on input line 532.
+(pdftex.def)             Requested size: 85.13896pt x 67.19073pt.
+<schaffern.png, id=44, 1439.3775pt x 1125.20375pt>
 File: schaffern.png Graphic file (type png)
 <use schaffern.png>
-Package pdftex.def Info: schaffern.png  used on input line 633.
-(pdftex.def)             Requested size: 142.26378pt x 104.10695pt.
-<happycat.png, id=41, 1167.36125pt x 962.59625pt>
+Package pdftex.def Info: schaffern.png  used on input line 538.
+(pdftex.def)             Requested size: 85.13896pt x 66.54784pt.
+<happycat.png, id=45, 1018.80624pt x 878.28125pt>
 File: happycat.png Graphic file (type png)
 <use happycat.png>
-Package pdftex.def Info: happycat.png  used on input line 634.
-(pdftex.def)             Requested size: 123.76949pt x 102.05234pt.
+Package pdftex.def Info: happycat.png  used on input line 544.
+(pdftex.def)             Requested size: 85.13896pt x 73.38647pt.
 
-Overfull \hbox (14.03326pt too wide) in paragraph at lines 633--635
- [][][] 
+Overfull \hbox (31.7937pt too wide) in paragraph at lines 512--548
+[]$[]$$[]$
  []
 
-<alpinea.png, id=42, 1388.18625pt x 1181.41376pt>
+
+Overfull \hbox (31.7937pt too wide) in paragraph at lines 512--548
+[]$$[]$
+ []
+
+
+Overfull \hbox (31.7937pt too wide) in paragraph at lines 512--548
+[]$$[]$ 
+ []
+
+<alpinea.png, id=46, 1388.18625pt x 1129.21875pt>
 File: alpinea.png Graphic file (type png)
 <use alpinea.png>
-Package pdftex.def Info: alpinea.png  used on input line 641.
-(pdftex.def)             Requested size: 128.0374pt x 108.95457pt.
-<alpineb.png, id=43, 1372.12625pt x 1165.35374pt>
+Package pdftex.def Info: alpinea.png  used on input line 569.
+(pdftex.def)             Requested size: 85.13896pt x 69.24925pt.
+<alpineb.png, id=47, 1372.12625pt x 1119.18124pt>
 File: alpineb.png Graphic file (type png)
 <use alpineb.png>
-Package pdftex.def Info: alpineb.png  used on input line 642.
-(pdftex.def)             Requested size: 128.0374pt x 108.73596pt.
-
-Overfull \hbox (4.0748pt too wide) in paragraph at lines 641--643
- [][][] 
- []
-
-<qinga.png, id=44, 1199.48125pt x 1155.31625pt>
+Package pdftex.def Info: alpineb.png  used on input line 575.
+(pdftex.def)             Requested size: 85.13896pt x 69.43633pt.
+<qinga.png, id=48, 1500.60625pt x 1196.47pt>
 File: qinga.png Graphic file (type png)
 <use qinga.png>
-Package pdftex.def Info: qinga.png  used on input line 644.
-(pdftex.def)             Requested size: 105.27519pt x 101.38255pt.
-<qingb.png, id=45, 1251.67625pt x 1204.5pt>
+Package pdftex.def Info: qinga.png  used on input line 581.
+(pdftex.def)             Requested size: 85.13896pt x 67.87817pt.
+<qingb.png, id=49, 1496.59125pt x 1195.46625pt>
 File: qingb.png Graphic file (type png)
 <use qingb.png>
-Package pdftex.def Info: qingb.png  used on input line 645.
-(pdftex.def)             Requested size: 105.27519pt x 101.30595pt.
-<branina.png, id=46, 1663.21375pt x 1163.34625pt>
+Package pdftex.def Info: qingb.png  used on input line 587.
+(pdftex.def)             Requested size: 85.13896pt x 68.00365pt.
+<branina.png, id=50, 1663.21375pt x 1163.34625pt>
 File: branina.png Graphic file (type png)
 <use branina.png>
-Package pdftex.def Info: branina.png  used on input line 647.
-(pdftex.def)             Requested size: 128.0374pt x 89.55486pt.
-<braninb.png, id=47, 1565.85pt x 1098.1025pt>
+Package pdftex.def Info: branina.png  used on input line 593.
+(pdftex.def)             Requested size: 85.13896pt x 59.53755pt.
+<braninb.png, id=51, 1565.85pt x 1098.1025pt>
 File: braninb.png Graphic file (type png)
 <use braninb.png>
-Package pdftex.def Info: braninb.png  used on input line 648.
-(pdftex.def)             Requested size: 128.0374pt x 89.77689pt.
+Package pdftex.def Info: braninb.png  used on input line 599.
+(pdftex.def)             Requested size: 85.13896pt x 59.70045pt.
 
-Overfull \hbox (4.0748pt too wide) in paragraph at lines 647--649
- [][][] 
+Overfull \hbox (31.7937pt too wide) in paragraph at lines 567--603
+[]$[]$$[]$
  []
 
-<rastrigina.png, id=48, 1214.5375pt x 1152.305pt>
+
+Overfull \hbox (31.7937pt too wide) in paragraph at lines 567--603
+[]$$[]$
+ []
+
+
+Overfull \hbox (31.7937pt too wide) in paragraph at lines 567--603
+[]$$[]$ 
+ []
+
+<rastrigina.png, id=52, 1214.5375pt x 1152.305pt>
 File: rastrigina.png Graphic file (type png)
 <use rastrigina.png>
-Package pdftex.def Info: rastrigina.png  used on input line 655.
-(pdftex.def)             Requested size: 128.0374pt x 121.46153pt.
-<rastriginb.png, id=49, 1199.48125pt x 1155.31625pt>
-File: rastriginb.png Graphic file (type png)
-<use rastriginb.png>
-Package pdftex.def Info: rastriginb.png  used on input line 656.
-(pdftex.def)             Requested size: 128.0374pt x 123.31264pt.
-<rastriginc.png, id=50, 1199.48125pt x 1155.31625pt>
-File: rastriginc.png Graphic file (type png)
-<use rastriginc.png>
-Package pdftex.def Info: rastriginc.png  used on input line 657.
-(pdftex.def)             Requested size: 128.0374pt x 123.31264pt.
-<rosenbrocka.png, id=51, 492.84125pt x 478.78876pt>
+Package pdftex.def Info: rastrigina.png  used on input line 665.
+(pdftex.def)             Requested size: 85.13896pt x 80.77509pt.
+<rosenbrocka.png, id=53, 492.84125pt x 463.7325pt>
 File: rosenbrocka.png Graphic file (type png)
 <use rosenbrocka.png>
-Package pdftex.def Info: rosenbrocka.png  used on input line 659.
-(pdftex.def)             Requested size: 128.0374pt x 124.38716pt.
-<rosenbrockb.png, id=52, 492.84125pt x 478.78876pt>
+Package pdftex.def Info: rosenbrocka.png  used on input line 671.
+(pdftex.def)             Requested size: 85.13896pt x 80.10715pt.
+<rastriginb.png, id=54, 1199.48125pt x 1155.31625pt>
+File: rastriginb.png Graphic file (type png)
+<use rastriginb.png>
+Package pdftex.def Info: rastriginb.png  used on input line 677.
+(pdftex.def)             Requested size: 85.13896pt x 81.991pt.
+<rosenbrockb.png, id=55, 492.84125pt x 463.7325pt>
 File: rosenbrockb.png Graphic file (type png)
 <use rosenbrockb.png>
-Package pdftex.def Info: rosenbrockb.png  used on input line 660.
-(pdftex.def)             Requested size: 128.0374pt x 124.38716pt.
-<rosenbrockc.png, id=53, 492.84125pt x 478.78876pt>
+Package pdftex.def Info: rosenbrockb.png  used on input line 683.
+(pdftex.def)             Requested size: 85.13896pt x 80.10715pt.
+<rastriginc.png, id=56, 1199.48125pt x 1155.31625pt>
+File: rastriginc.png Graphic file (type png)
+<use rastriginc.png>
+Package pdftex.def Info: rastriginc.png  used on input line 689.
+(pdftex.def)             Requested size: 85.13896pt x 81.991pt.
+<rosenbrockc.png, id=57, 492.84125pt x 462.72874pt>
 File: rosenbrockc.png Graphic file (type png)
 <use rosenbrockc.png>
-Package pdftex.def Info: rosenbrockc.png  used on input line 661.
-(pdftex.def)             Requested size: 128.0374pt x 124.38716pt.
-[4] [5]
-Underfull \hbox (badness 1668) in paragraph at lines 715--716
+Package pdftex.def Info: rosenbrockc.png  used on input line 695.
+(pdftex.def)             Requested size: 85.13896pt x 79.93376pt.
+
+Overfull \hbox (31.7937pt too wide) in paragraph at lines 663--699
+[]$[]$$[]$
+ []
+
+
+Overfull \hbox (31.7937pt too wide) in paragraph at lines 663--699
+[]$$[]$
+ []
+
+
+Overfull \hbox (31.7937pt too wide) in paragraph at lines 663--699
+[]$$[]$ 
+ []
+
+[5 <./ackley.png> <./boha.png> <./booth.png> <./matyas.png> <./schaffern.png> <
+./happycat.png> <./alpinea.png> <./alpineb.png> <./qinga.png> <./qingb.png> <./
+branina.png> <./braninb.png> <./rastrigina.png> <./rosenbrocka.png> <./rastrigi
+nb.png> <./rosenbrockb.png> <./rastriginc.png> <./rosenbrockc.png>]
+Underfull \hbox (badness 1668) in paragraph at lines 770--771
 []\OT1/ptm/m/n/8 D. Jitkongchuen, P. Phaidang and P. Pongtaw-e-vi-rat, "Grey wo
 lf
  []
 
 
-Underfull \hbox (badness 3746) in paragraph at lines 715--716
+Underfull \hbox (badness 3746) in paragraph at lines 770--771
 \OT1/ptm/m/n/8 op-ti-miza-tion al-go-rithm with invasion-based mi-gra-tion op-e
 r-a-tion,"
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 715--716
+Underfull \hbox (badness 10000) in paragraph at lines 770--771
 \OT1/ptm/m/n/8 2016 IEEE/ACIS 15th In-ter-na-tional Con-fer-ence on Com-puter
  []
 
 
-Underfull \hbox (badness 2591) in paragraph at lines 715--716
+Underfull \hbox (badness 2591) in paragraph at lines 770--771
 \OT1/ptm/m/n/8 and In-for-ma-tion Sci-ence (ICIS), Okayama, 2016, pp. 1-5, doi:
 
  []
@@ -789,47 +804,40 @@ Before submitting the final camera ready copy, remember to:
  uses only Type 1 fonts and that every step in the generation
  process uses the appropriate paper size.
 
-[6 <./ackley.png> <./boha.png> <./booth.png> <./matyas.png> <./schaffern.png> <
-./happycat.png> <./alpinea.png> <./alpineb.png> <./qinga.png> <./qingb.png> <./
-branina.png> <./braninb.png>] [7 <./rastrigina.png> <./rastriginb.png> <./rastr
-iginc.png> <./rosenbrocka.png> <./rosenbrockb.png> <./rosenbrockc.png>]
-(./paper.aux)
-
-LaTeX Warning: There were multiply-defined labels.
-
- ) 
+[6] (./paper.aux) ) 
 Here is how much of TeX's memory you used:
- 7607 strings out of 481239
- 121160 string characters out of 5920378
- 519443 words of memory out of 5000000
+ 7608 strings out of 481239
+ 121314 string characters out of 5920378
+ 515443 words of memory out of 5000000
  22729 multiletter control sequences out of 15000+600000
- 577865 words of font info for 104 fonts, out of 8000000 for 9000
+ 578972 words of font info for 105 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 41i,17n,49p,827b,702s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
-e/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texm
-f-dist/fonts/type1/public/amsfonts/cmextra/cmex8.pfb></usr/share/texlive/texmf-
-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/f
-onts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texlive/texmf-dist/fonts/ty
-pe1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/fonts/type1/pub
-lic/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/ams
-fonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/c
-m/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.
-pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></us
-r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/
-texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/
-texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-
-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texlive/texmf-dist/fo
-nts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/typ
-e1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/publ
-ic/amsfonts/symbols/msbm10.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/t
-imes/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmbi8a.pf
-b></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/t
-exlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on paper.pdf (7 pages, 17631737 bytes).
+ 41i,17n,42p,828b,702s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}<
+/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex7.pfb></u
+sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex8.pfb></usr
+/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share
+/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texliv
+e/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf
+-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/f
+onts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/ty
+pe1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/pub
+lic/amsfonts/cm/cmr5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsf
+onts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/
+cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb
+></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr
+/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/share/
+texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texlive
+/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-
+dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fo
+nts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/texlive/texmf-dist/fon
+ts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/ti
+mes/utmbi8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb
+></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on paper.pdf (6 pages, 12905786 bytes).
 PDF statistics:
- 152 PDF objects out of 1000 (max. 8388607)
- 83 compressed objects within 1 object stream
+ 151 PDF objects out of 1000 (max. 8388607)
+ 82 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  96 words of extra memory for PDF output out of 10000 (max. 10000000)
 

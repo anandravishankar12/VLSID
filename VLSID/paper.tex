@@ -73,7 +73,7 @@
 \maketitle
 
 \begin{abstract}
-Computational intelligence has produced nature inspired algorithms as the new and popular problem solving tool in Multi-Objective Optimization Problems (MOOPs). In this paper we present Democratic Algorithm (DA), a social-construct based algorithm heavily inspired from hierarchical swarm intelligence and real life social establishments. Each candidate in the swarm takes part in the search process and contends for the position of the leader. Additional enhancements such as dynamism and memory retention capabilities boost the performance of DA. A comprehensive study is conducted with 18 benchmark functions to act as proof-of-concept and lay the groundwork for future works. The results so obtained, cement the competence of DA as it outperforms other algorithms in multiple unimodal and multimodal landscapes.
+Computational intelligence has produced nature-inspired algorithms as the new and popular problem-solving tool in Multi-Objective Optimization Problems (MOOPs). In this paper, we present Democratic Algorithm (DA), a social-construct-based algorithm heavily inspired by hierarchical swarm intelligence and real-life social establishments. Each candidate in the swarm takes part in the search process and contends for the position of the leader. Additional enhancements such as dynamism and memory retention capabilities boost the performance of DA. A comprehensive study is conducted with 18 benchmark functions to act as a proof-of-concept and lay the groundwork for future works. The results so obtained, cement the competence of DA as it outperforms other algorithms in multiple unimodal and multimodal landscapes.
 % diverse fields such as soft computing, functional optimization, data science and machine learning. These algorithms can be further sub-divided, with swarm intelligence, physics-inspired, social, evolutionary algorithms a few noteworthy. In this paper we present Democratic Algorithm (DA) , a social-construct based algorithm heavily inspired from hierarchy swarm intelligence and real life social establishments. Our proposal extends the existing methodology for hierarchical structures by framing experience into a viable component for future applications. A comprehensive study is conducted with 16 benchmark functions and real-life data to cement the competence of the algorithm with DA providing a markup of 2-7.4X of convergence rate. 
 \end{abstract}
 
@@ -83,11 +83,11 @@ Optimization, Swarm intelligence, Democratic Algorithm, Memoization, Dynamic Str
 
 \section{Introduction}
 
-Optimization lies at the very core of majority of the problems ranging from machine learning to business planning. The level of importance awarded to optimization is due to the limited computational resources at hand. To compensate for the lack of resources, smarter algorithms are developed on an almost daily basis. These algorithms are capable of working efficiently in a constrained environment. 
+Optimization lies at the very core of the majority of the problems ranging from machine learning to business planning. The level of importance awarded to optimization is due to the limited computational resources at hand. To compensate for the lack of resources, smarter algorithms are developed on an almost daily basis. These algorithms are capable of working efficiently in a constrained environment. 
 
 \subsection{Multi-Objective Optimization Problem Definition}
 
-As the name suggests, Multi-Objective Optimization Problems (MOOPs) require simultaneous solutions to multiple single-objective optimization problems each with it's own set of constraints. 
+As the name suggests, Multi-Objective Optimization Problems (MOOPs) require simultaneous solutions to multiple single-objective optimization problems each with its own set of constraints. 
 
 {\scriptsize
 \begin{align}
@@ -111,87 +111,15 @@ Majority of MOOPs revolve around the idea of dominance as conflicts arise betwee
 \item The solution $\textit{i}$ is strictly better than $\textit{j}$ in at least one sub-optimization problem $\textit{f\textsubscript{x}}$ for all $\textit{x} = 1,2 \dots, \textit{M}$
 \end{itemize}
 
-This concept, although intuitive, allows for a concrete definition of a solution being "better" than another and assists in searching for the non-dominated solutions. However, an interesting case appears between two solutions, when $\textit{i}$ is better than $\textit{j}$ in one sub-problem where $\textit{j}$ is better than $\textit{i}$ in another. After performing a pairwise comparison and eliminating all the singularly dominated solutions, we have a set of non-dominated solutions called the non-dominated set. Any solution inside this set, is better than any solution outside the set. 
+This concept, although intuitive, allows for a concrete definition of a solution being "better" than another and assists in searching for the non-dominated solutions. However, an interesting case appears between two solutions, when $\textit{i}$ is better than $\textit{j}$ in one sub-problem where $\textit{j}$ is better than $\textit{i}$ in another. After performing a pairwise comparison and eliminating all the singularly dominated solutions, we have a set of non-dominated solutions called the non-dominated set. Any solution inside this set is better than any solution outside the set. 
 
 When such a space constitutes the entire space of solutions, the set is called a Global Pareto-Optimal set. By introducing a neighboring constant which allows for some leverage, a Global Pareto-Optimal solution can be converted to a Local Pareto-Optimal solution. Therefore the initial MOOP is now transformed into a task of finding multiple Pareto-Optimal solutions with good diversity in decision variable values. The following section describes the various methods by which MOOPs can be solved. 
 
 
-% \subsection{Orthodox Methods of Solving MOOPs}
-% 
-% The techniques developed in this section describe classical techniques which are based on mathematical and statistical reasoning. These algorithms are rather simplistic and quite intuitive. Some of the noteworthy techniques are discussed here:
-% 
-% \begin{itemize}
-% 
-% \item Weighting Sum Method: 
-% 
-% In this algorithm, the MOOP is decomposed into multiple singular problems and each problem is assigned a weight corresponding to it's respective importance to the global front. The weights must be quantified based on prior information and the singular objective functions must be normalized for proper setting of the weight vector \cite{arora}. Equation $\ref{eqn:2}$ decomposes the MOOP $F\textsubscript{m}(x)$ into $\textit{m}$ single-objective optimization problems and weight vector $w\textsubscript{m}$, subject to constraints mentioned in Equation $\ref{eqn:1}$.
-% 
-% \begin{equation}
-% \label{eqn:2}
-% Optimize:F\textsubscript{m}(x) =  \sum_{m=1}^{M}w\textsubscript{m}f\textsubscript{m}(x)
-% \end{equation}
-% 
-% \begin{itemize}
-% \item Advantages:
-% \begin{enumerate}
-% \item Simple and intuitive
-% \end{enumerate}
-% \item Disadvantages:
-% \begin{enumerate}
-% \item Required conversion of minmax problems into 1 type
-% \item Difficulity in proper weight vector setting
-% \end{enumerate}
-% \end{itemize}
-% 
-% \item Weighted Metric Method:
-% 
-% This technique is a general extension of weighting sum method with a varient of combination of multiple objectives \cite{ryu}. Equation $\ref{eqn:3}$ represents this method where $\textit{l\textsubscript{p}}$ is the distance measure between candidate solution $\textit{x}$ and solution $\textit{z\textsuperscript{*}}$, parameter $\textit{p} \in [1,\infty]$. For $\textit{p}$ = 1, weighted metric decomposes into weighting sum method.
-% 
-% \begin{equation}
-% \label{eqn:3}
-% Optimize:l\textsubscript{p}(x) =  (\sum_{m=1}^{M}w\textsubscript{m}|f\textsubscript{m}(x) - z\textsubscript{m}\textsuperscript{*}|\textsuperscript{p})\textsuperscript{\sufr{1}{p}}
-% \end{equation}
-% 
-% \begin{itemize}
-% \item Advantages:
-% \begin{enumerate}
-% \item Simple yet generic distance metric
-% \end{enumerate}
-% \item Disadvantages:
-% \begin{enumerate}
-% \item Prerequistive knowledge of individual minima and maxima of each function is required
-% \end{enumerate}
-% \end{itemize}
-% 
-% \item Value Function Method:
-% 
-% In this method, the user must provide a value mapping function $\mathbb{U}:\mathbb{R\textsuperscript{M}} \rightarrow \mathbb{R}$ for all $\textit{M}$ functions. The optimization process is then reduced to Equation $\ref{eqn:4}$ \cite{sinha}, subject to the same constraints as Equation $\ref{eqn:1}$
-% 
-% \begin{equation}
-% \label{eqn:4}
-% Optimize: \mathbb{U}(f(x))
-% \end{equation}
-% 
-% \begin{itemize}
-% \item Advantages:
-% \begin{enumerate}
-% \item Ideal when prior information is available
-% \end{enumerate}
-% \item Disadvantages:
-% \begin{enumerate}
-% \item Problem of over-simplified value mapping function
-% \end{enumerate}
-% \end{itemize}
-% 
-% % This algorithm is one of the simplest way to solve a MOOP due to the intuitive nature, ease of use and elementary mathematical representation. However, there are a number of drawbacks associated with this algorithm such as unreliable mapping leading to difficulties in proper weight configuration and requirment of converting all minimization and maximization problems into 1 common type. 
-% 
-% \end{itemize}
-% 
-% Solving MOOPs using classical methods requires either prior information about the subproblems or assumptions for decomposition. These algorihtms have been put to use in multiple practical applications involving huge sets of internal parameters, which incur an overhead of optimal configuration setting. 
-% 
+ 
 \section{Solving MOOPs}
 
-In this section, we provide a brief overview of methods to solve MOOPs and obtain Pareto-optimal solutions. Historically, these methods can be classified into classical and evolutionary techniques \cite{vikhar} \cite{swarm}. Additional information about these techniques and their sub-classifications are provided in Table $\ref{tab1}$ and $\ref{tab2}$. Every algorithm is set back in one way or the other due to the No Free Lunch Theorem. Our goal in this paper is not create an algorithm which works perfectly for all problems, but to put forth a novel construct which mitigates the drawbacks of it's predecessors. 
+In this section, we provide a brief overview of methods to solve MOOPs and obtain Pareto-optimal solutions. Historically, these methods can be classified into classical and evolutionary techniques \cite{vikhar} \cite{swarm}. Additional information about these techniques and their sub-classifications are provided in Table $\ref{tab1}$ and $\ref{tab2}$. Every algorithm is set back in one way or the other due to the No Free Lunch Theorem. Our goal in this paper does not create an algorithm which works perfectly for all problems, but to put forth a novel construct which mitigates the drawbacks of its predecessors. 
 
 \begin{table*}
 \caption{\textsc{Classical Solving Methods}}
@@ -250,55 +178,16 @@ Biased Crowding&Desired trade-off&Crowding of solutions\\
 }
 \end{table*}
 
-A common drawback pattern encountered in the listed techniques is dominance factor. Light Beam method works towards being independent from this factor by leveraging a prior knowledge on the reference direction. Whereas Imprecision value function method takes in a ranking system, but created dominant solutions. In this paper, we propose a solution to this conundrum deploying multiple candidates in a dynamically structured format into the solution landscape instead of a static master-follower format. As a result of the increased competition, the candidate solutions have added incentive to capture the top department. 
+A common drawback pattern encountered in the listed techniques is the dominance factor. The Light Beam method works towards being independent of this factor by leveraging prior knowledge of the reference direction. Whereas the Imprecision value function method takes in a ranking system but created dominant solutions. In this paper, we propose a solution to this conundrum deploying multiple candidates in a dynamically structured format into the solution landscape instead of a static master-follower format. As a result of the increased competition, the candidate solutions have added incentive to capture the top department. 
 
-% 
-% \subsection{Quantified problems in Classical Computation}
-% 
-% The algorithms described in the preceeding section can be classified as either direct search or gradient based search techniques \cite{arnold}. Direct search algorithms user described constriants are utilized in their raw format to guide the solution. Gradient based search techniques use derivatives of the objective function and constraints to guide the solution. However, both these techniques encouter similar problems as described:
-% 
-% \begin{itemize}
-% \item Result is dependent on selection of initial state 
-% \item Tendency to get stuck in local optima
-% \item Lack of genralization due to dependence on problem statement
-% \item Requirement of mathemtical representation 
-% \item Inefficient when it comes to non-differentiable or discontinous problems
-% \item Lack of parallelization in majority of the algorithms
-% \item Time incurred is high due to single search guidance system
-% \end{itemize}
-% 
-% These problems resulted in the development of new fields in Computational Intelligence, namely Evolutionary Algorithms (EA) \cite{vikhar} and Swarm Intelligence (SI) \cite{swarm}. The main motivation for the development of these algorithms is to alleviate the hurdles faced by classical algorithms. 
-% 
-% \subsection{Swarm Intelligence to the Rescue}
-% 
-% SI proposes emulating naturally occuring groups and their behaviour for optimal functioning. $\textit{Swarm}$ refers to a group of disorganized individuals working towards the common goal of finding the global optimum. When viewed seperatley, these individuals are particularly ineffective. However when properly instructed, these individuals transform into a centralized, collective and self-organized entity. When deployed accurately, a dynamic search pattern, better than random search, appears. This intelligence and self-organizing technique is called Swarm intelligence and is depicted in Algorithm $\ref{alg:SI}$.
-% 
 
-% 
-% \subsection{Genetic Modifiers}
-% 
-% Under the umbrella of EA, Genetic Algorithms (GA) \cite{man} has emerged as one of the most popular search and optimization techniques. The core of GA lies in the feedback process, which updates the candidate solutions in accordance with 3 main sub-processes. Figure $\ref{ga}$ summarizes the entire process of GA.
-% 
-% \begin{itemize}
-% \item Selection: This step involves selecting the candidates having the best fitness score. The method used for DA is the rank-based selection \cite{abdul} in which the probability of selection of a chromosome is directly related to the corresponding fitness value. 
-% \item Crossover: The characteristics of the parents selected at the selection stage are intermixed to generate better candidates in the next generation. BLX or Blend Crossover \cite{kita} technique was utilized to have the optimal feature selection. 
-% \item Mutation: As an add-on to the generational transition, random changes are added to add diversity and possibly improve the candidates. Inversion Mutation \cite{im} was applied to introduce a sense of randomness into the process.
-% \end{itemize}
-% 
-% \begin{figure}[!b]
-% \centering
-% \includegraphics[height=7.93cm]{ga.png}
-% \caption{Genetic Algorithm}
-% \label{ga}
-% \end{figure}
 
 \section{Democratic Algorithm (DA)}
 
-In this section we present a novel social-construct based algorithm heavily inspired from swarm intelligence and real life social establishments. In order to find the global Pareto Optimal solution, each candidate aims to transcend to the next department with the help of the previous generations. 
-% which provides a solution to the conundrum presented in the previous section. DA deploys multiple candidates in a dynamically structured format into the solution landscape instead of a static master-follower format. The increased competition results in increased desire for current candidates to find the Pareto optimal. 
+In this section, we present a novel social-construct based algorithm heavily inspired by swarm intelligence and real life social establishments. To find the global Pareto Optimal solution, each candidate aims to transcend to the next department with the help of the previous generations.  
 
 \subsection{Inspiration}
-The term "Democracy" was coined in Athens, Greece and literally translates to "Strength of the People". The 2 main characteristics borrowed from the social ideology for this algorithm are as follows.
+The term "Democracy" was coined in Athens, Greece, and translates to "Strength of the People". The two main characteristics borrowed from the social ideology for this algorithm are as follows.
 
 \begin{itemize}
 \item Equal opportunity for any candidate to ascend and claim the global decision making spot
@@ -325,7 +214,7 @@ In the following subsections, models of the social hierarchy and the seasons are
 
 \subsection{Guiding Season}
 
-This phase has the sole purpose of finding the optimal solution. Candidates belonging to the highest department are responsible for finding the solution. The other candidates act as advisers which help maintain the social structure and prevent the search process from falling into local optima. In order to introduce a dynamic factor the search process, the solutions obtained by the top departments are continously stored in a table for any future reference. The updation of the current position is done based a a weighted sum of the current position of all the departments. Based on the difference between the solution provided and the true solution, the top department's reqard score is either incremented or decremented by 1. The algorithm is depicted in Algorithm $\ref{alg:gs}$.
+This phase has the sole purpose of finding the optimal solution. Candidates belonging to the highest department are responsible for finding the solution. The other candidates act as advisers which help maintain the social structure and prevent the search process from falling into local optima. To introduce a dynamic factor in the search process, the solutions obtained by the top departments are continuously stored in a table for any future reference. The updation of the current position is done based on a weighted sum of the current position of all the departments. Based on the difference between the solution provided and the true solution, the top department's reward score is either incremented or decremented by 1. The algorithm is depicted in Algorithm $\ref{alg:gs}$.
 
 \begin{algorithm}[!t]
 \footnotesize
@@ -351,7 +240,7 @@ This phase has the sole purpose of finding the optimal solution. Candidates belo
 
 \subsection{Voting Season}
 
-After a set time period $\textit{T}$ if the total reward score does not exceed a threshold $\lambda$ then the top department is replaced by the one just below it. If $\lambda$ is exceeded, then the next problem is loaded with the current configuration.
+After a set period $\textit{T}$ if the total reward score does not exceed a threshold $\lambda$ then the top department is replaced by the one just below it. If $\lambda$ is exceeded, then the next problem is loaded with the current configuration.
 
 The entire process of the voting season is displayed in Algorithm $\ref{alg:da}$.
 
@@ -404,90 +293,6 @@ The entire process of the voting season is displayed in Algorithm $\ref{alg:da}$
 
 \subsection{Key points}
 
-DA is a subset of Multi-Objective Evolutionary Algorithms and follows a similar convergence proof with slight modifications as proposed by G. Rudolph and A. Agapie \cite{conv}. He related the choice of evolutionary operations to the positiveness of a variation kernel. If the transition probability from a set of chromosomes to any solution is non-zero positive, then the transition process of the operations have a positive variation kernel. Extending this across with a homogeneous Markov chain having a positive transition matrix, it has been proven the all Pareto-optimal solutions will be the global solution in finite time with probability one. In order to prove the stochastic convergence, we first need to define a measure for the mapping.
-
-\begin{theorem}
-If $A$ and $B$ are subsets of a finite population set $X$ the $d(A,B)$ = $|A \cup B| - |A \cap B|$ is a metric on the power set of $X$
-\end{theorem}
-
-\begin{proof}\renewcommand{\qedsymbol}{}
-Let $X$ = $\{X\textsuperscript{1}, X\textsuperscript{2} \dots, X\textsuperscript{n} \}$ be the candidates and $a\textsubscript{i}$ and $b\textsubscript{i}$ be the candidate and solution incidence vectors. \\
-\begin{align*}
-d(A,B) &= \sum_{i=1}^{n}(a\textsubscript{i} + b\textsubscript{i} - 2a\textsubscript{i}b\textsubscript{i})\\
- &= \sum_{i=1}^{n}[(1-b\textsubscript{i})a\textsubscript{i} + (1-a\textsubscript{i})b\textsubscript{i}]\\
- &= \sum_{i=1}^{n}|a\textsubscript{i} - b\textsubscript{i}| = ||a - b||\textsubscript{1}
-\end{align*}
-\end{proof}
-Therefore the Hamming Distance between the incidence vectors can act as a metric for mapping. A secondary measure utilized in the mapping is $\delta\textsubscript{B}(A)$ = $|A| - |A \cap B|$ which counts the number of candidates in set $A$ but not in set $B$. Stochastic convergence proof is discussed next. 
-
-\begin{theorem}
-Let $n\textsubscript{t}$ be the population of DA at time $t \geq 0$ and $F\textsubscript{t} = f(n\textsubscript{t})$ be the optimal mapping. DA is said to converge at probability 1 to the entire set if
-
-\begin{equation*}
-d(F\textsubscript{t}, M\textsuperscript{*}) \rightarrow 0,  t \rightarrow \infty
-\end{equation*}
-where convergence to set of minimal elements $\textit{M\textsuperscript{*}}$ occurs at probability 1 if 
-
-\begin{equation*}
-\delta\textsubscript{M\textsuperscript{*}}(F\textsubscript{t}) \rightarrow 0\\
-\end{equation*}
-with probability 1 as $\textit{t} \rightarrow \infty$
-\end{theorem}
-
-The implication of $d(F\textsubscript{t}, M\textsuperscript{*}) \rightarrow 0$ implies $\delta\textsubscript{M\textsuperscript{*}}(F\textsubscript{t}) \rightarrow 0$ extends to the worst case scenario of $n = M\textsuperscript{*}$. However, if a Markov Chain is maintained dynamically, $|M\textsuperscript{*}|=1$ and the limited population size will converge to a critical point. The rate of convergence is another important piece in this discussion. 
-
-\begin{theorem}
-Let $n\textsubscript{i,t}$, $F$, $GM$ and $\lambda$ be the population of the $i\textsuperscript{th}$ department of DA at time $t$, fitness function, rate of cross-over-mutation and threshold for the memory element respectively. The rate of population progression from department $i$ to $j$ for a given problem can be expressed as
-
-\begin{equation*}
-\frac{d(Population\textsubscript{i $\rightarrow$ j})}{dt} \propto f(n\textsubscript{i,t}, \frac{1}{F}, GM, \lambda)
-\end{equation*}
-\end{theorem}
-
-\begin{proof}\renewcommand{\qedsymbol}{}
-
-Consider $n\textsubscript{i,t}$ and $F$ as a combined quantity $Q(i,j,t)$. The distribution of $Q(i,j,t)$ will be binomial as the peak is achived with maximum population and highest fitness score. The probability of candidate $c$ at department $i$ to continue into department $j$ at time $t+1$ will be given by
-
-\begin{equation*}
-P(j|i,t+1) =  {n\textsubscript{$i$,$t$} \choose n\textsubscript{$i$,$t$}} GM\textsuperscript{$n\textsubscript{$i$,$t$}$}
-\end{equation*}
-
-Based on this distribution, diffusion equations with initial state $p$, relative frequency of candidate selection till current department $\mu$ and selection strength $s$ can be written as:
-
-\begin{equation*}
-\frac{\partial \mu(p,t)}{\partial t} = \frac{p(1-p)}{2}\frac{\partial^2 \mu(p,t)}{\partial^2 p} + sp(1-p)\frac{\partial mu(p,t)}{\partial mu}
-\end{equation*}
-
-Fixing this probability when $t$ $\rightarrow$ $\infty$ as
-
-\begin{equation*}
-u(p) = \lim_{t \rightarrow \infty} {\partial(p,t)}
-\end{equation*}
-
-We get the rate of transition of a candidate as a function of the proficiency over time $t$, $u(p)\textsuperscript{$t$}$.
-\end{proof}
-% From a mathematical point of view, both the structure and the search processes evolve over time with feedback. For each search, a lookup is conducted by candidate $\textit{c}$ in table $\textit{H}$. If not found, a solution $\textit{x\textsubscript{0}}$ is assumed as the initial point and the search of optimum solution $\textit{x\textsubscript{1}}$ begins. At the end of each expedition, the top department's performance is graded through a reward system. Based on the global performance overall a set runtime, either the department continues in power or gets replaced.
-
-Based on the representation, the following observations can be made:
-\begin{itemize}
-\item The updation process occurs at an individual and at a departmental level to save the best solutions obtained so far
-\item The parameters $\vec{A}$ and $\vec{C}$ assist the solutions to have higher dimensionality
-\item Due to the dual updation and introduction of a memory element, the problems functions will saturate at a middle level department
-\item The voting season provides weighted rights to each candidate in each department. The weights are assigned based on the individual's fitness which in turn is dependent on their department's position 
-\item As the department rank increases, the number of individual candidate in the department decreases to promote elitism. This would ensure survival of the best solutions in future problems. 
-\item As the department rank decreases, the number of individual candidate in the department increase to promote diversity. This would open up new avenues to explore and possibly increase chances of finding the gobal optimum.  
-\item The increased number of parameters requires fine tunning which can be automated
-\end{itemize}
-
-To sum up, DA starts with generating and evaluating a set of candidate solutions. The solutions are grouped according to their relative goodness of fit. The top candidates are responsible for finding the optimum solution while the other candidates are required to maintain the hierarchy, provide valuable input to the leaders and contest when the results begin deteriorating. When the top department does not function as per requirement, the lower departments replace it. A memory component is introduced in the form of a table which maps the previously encountered inputs to their corresponding outputs. 
-
-\section{Results and Discussion}
-
-In this section the DA algorithm is benchmarked against 18 standard minimization functions. These functions are described in Table $\ref{tab:1}$. The DA was iterated 20 times on each of these functions and the results were compared against other popular SI algorithms such as Particle Swarm Optimization (PSO) \cite{pso}, Grey Wolf Optimization (GWO) \cite{gwo}, Multiverse Optimization (MVO)\cite{mvo} and Cuckoo Search (CS) \cite{cs}. The metric based results such as mean and standard deviation is listed in Table $\ref{tab:2}$. The experiment was set up on a 64-bit Machine with Ubuntu 20.04, Intel® CoreTM i5-7200U CPU @ 2.50GHz × 4, with a GeForce 940MX/PCle/SSE2 graphic card.
-
-Based on the results, DA provides ambitious results on the becnhmark functions \cite{bf}. DA outperforms the other algorithms in F2, F8, F15 and F18. The selective performance boosts could be attributed to the optimal voting season. In certain cases the top departments would have saturated and the replacement process might have been ineffective. As it is the case with any algorithm, global optimum search can never be guarenteed. The critical point discussed in the previous section is Department C based on the experimental runs conducted. 
-
-
 \begin{table*}
 \caption{\textsc{Benchmark Functions}}
 \label{tab:1}
@@ -522,7 +327,101 @@ Alpine & F18 & $\prod_{i=1}^{n}\sqrt{x_i}sin(x_i)$ & Multi & [0,10] & 2.80 at $x
 }
 \end{table*}
 
+DA is a subset of Multi-Objective Evolutionary Algorithms and follows a similar convergence proof with slight modifications as proposed by G. Rudolph and A. Agapie \cite{conv}. He related the choice of evolutionary operations to the positiveness of a variation kernel. If the transition probability from a set of chromosomes to any solution is non-zero positive, then the transition process of the operations have a positive variation kernel. Extending this across with a homogeneous Markov chain having a positive transition matrix, it has been proven the all Pareto-optimal solutions will be the global solution in finite time with probability one. To prove the stochastic convergence, we first need to define a measure for the mapping.
+
+\begin{theorem}
+If $A$ and $B$ are subsets of a finite population set $X$ the $d(A,B)$ = $|A \cup B| - |A \cap B|$ is a metric on the power set of $X$
+\end{theorem}
+
+\begin{proof}\renewcommand{\qedsymbol}{}
+Let $X$ = $\{X\textsuperscript{1}, X\textsuperscript{2} \dots, X\textsuperscript{n} \}$ be the candidates and $a\textsubscript{i}$ and $b\textsubscript{i}$ be the candidate and solution incidence vectors. \\
+{\scriptsize
+\begin{align*}
+d(A,B) &= \sum_{i=1}^{n}(a\textsubscript{i} + b\textsubscript{i} - 2a\textsubscript{i}b\textsubscript{i})\\
+ &= \sum_{i=1}^{n}[(1-b\textsubscript{i})a\textsubscript{i} + (1-a\textsubscript{i})b\textsubscript{i}]\\
+ &= \sum_{i=1}^{n}|a\textsubscript{i} - b\textsubscript{i}| = ||a - b||\textsubscript{1}
+\end{align*}
+}
+\end{proof}
+Therefore the Hamming Distance between the incidence vectors can act as a metric for mapping. A secondary measure utilized in the mapping is $\delta\textsubscript{B}(A)$ = $|A| - |A \cap B|$ which counts the number of candidates in set $A$ but not in set $B$. Stochastic convergence proof is discussed next. 
+
+\begin{theorem}
+Let $n\textsubscript{t}$ be the population of DA at time $t \geq 0$ and $F\textsubscript{t} = f(n\textsubscript{t})$ be the optimal mapping. DA is said to converge at probability 1 to the entire set if
+{\scriptsize
+\begin{equation*}
+d(F\textsubscript{t}, M\textsuperscript{*}) \rightarrow 0,  t \rightarrow \infty
+\end{equation*}
+}
+where convergence to set of minimal elements $\textit{M\textsuperscript{*}}$ occurs at probability 1 if 
+{\scriptsize
+\begin{equation*}
+\delta\textsubscript{M\textsuperscript{*}}(F\textsubscript{t}) \rightarrow 0\\
+\end{equation*}
+}
+with probability 1 as $\textit{t} \rightarrow \infty$
+\end{theorem}
+
+The implication of $d(F\textsubscript{t}, M\textsuperscript{*}) \rightarrow 0$ implies $\delta\textsubscript{M\textsuperscript{*}}(F\textsubscript{t}) \rightarrow 0$ extends to the worst case scenario of $n = M\textsuperscript{*}$. However, if a Markov Chain is maintained dynamically, $|M\textsuperscript{*}|=1$ and the limited population size will converge to a critical point. The rate of convergence is another important piece in this discussion. 
+
+\begin{theorem}
+Let $n\textsubscript{i,t}$, $F$, $GM$ and $\lambda$ be the population of the $i\textsuperscript{th}$ department of DA at time $t$, fitness function, rate of cross-over-mutation and threshold for the memory element respectively. The rate of population progression from department $i$ to $j$ for a given problem can be expressed as
+{\scriptsize
+\begin{equation*}
+\frac{d(Population\textsubscript{i $\rightarrow$ j})}{dt} \propto f(n\textsubscript{i,t}, \frac{1}{F}, GM, \lambda)
+\end{equation*}
+}
+\end{theorem}
+
+\begin{proof}\renewcommand{\qedsymbol}{}
+
+Consider $n\textsubscript{i,t}$ and $F$ as a combined quantity $Q(i,j,t)$. The distribution of $Q(i,j,t)$ will be binomial as the peak is achived with maximum population and highest fitness score. The probability of candidate $c$ at department $i$ to continue into department $j$ at time $t+1$ will be given by
+{\scriptsize
+\begin{equation*}
+P(j|i,t+1) =  {n\textsubscript{$i$,$t$} \choose n\textsubscript{$i$,$t$}} GM\textsuperscript{$n\textsubscript{$i$,$t$}$}
+\end{equation*}
+}
+
+
+
+Based on this distribution, diffusion equations with initial state $p$, relative frequency of candidate selection till current department $\mu$ and selection strength $s$ can be written as:
+{\scriptsize
+\begin{equation*}
+\frac{\partial \mu(p,t)}{\partial t} = \frac{p(1-p)}{2}\frac{\partial^2 \mu(p,t)}{\partial^2 p} + sp(1-p)\frac{\partial mu(p,t)}{\partial mu}
+\end{equation*}
+}
+Fixing this probability when $t$ $\rightarrow$ $\infty$ as
+{\scriptsize
+\begin{equation*}
+u(p) = \lim_{t \rightarrow \infty} {\partial(p,t)}
+\end{equation*}
+}
+We get the rate of transition of a candidate as a function of the proficiency over time $t$, $u(p)\textsuperscript{$t$}$.
+\end{proof}
+% From a mathematical point of view, both the structure and the search processes evolve over time with feedback. For each search, a lookup is conducted by candidate $\textit{c}$ in table $\textit{H}$. If not found, a solution $\textit{x\textsubscript{0}}$ is assumed as the initial point and the search of optimum solution $\textit{x\textsubscript{1}}$ begins. At the end of each expedition, the top department's performance is graded through a reward system. Based on the global performance overall a set runtime, either the department continues in power or gets replaced.
+
+Based on the representation, the following observations can be made:
+\begin{itemize}
+\item The updation process occurs at an individual and at a departmental level to save the best solutions obtained so far
+\item The parameters $\vec{A}$ and $\vec{C}$ assist the solutions to have higher dimensionality
+\item Due to the dual updation and introduction of a memory element, the problems functions will saturate at a middle level department
+\item The voting season provides weighted rights to each candidate in each department. The weights are assigned based on the individual's fitness which in turn is dependent on their department's position 
+\item As the department rank increases, the number of individual candidate in the department decreases to promote elitism. This would ensure survival of the best solutions in future problems. 
+\item As the department rank decreases, the number of individual candidate in the department increase to promote diversity. This would open up new avenues to explore and possibly increase chances of finding the gobal optimum.  
+\item The increased number of parameters requires fine tunning which can be automated
+\end{itemize}
+
+To sum up, DA starts with generating and evaluating a set of candidate solutions. The solutions are grouped according to their relative goodness of fit. The top candidates are responsible for finding the optimum solution while the other candidates are required to maintain the hierarchy, provide valuable input to the leaders, and contest when the results begin deteriorating. When the top department does not function as per requirement, the lower departments replace it. A memory component is introduced in the form of a table that maps the previously encountered inputs to their corresponding outputs. 
+
+
+
+\section{Results and Discussion}
+
+In this section, the DA algorithm is benchmarked against 18 standard minimization functions. These functions are described in Table $\ref{tab:1}$. The DA  iterated 20 times on each of these functions and the results were compared against other popular SI algorithms such as Particle Swarm Optimization (PSO) \cite{pso}, Grey Wolf Optimization (GWO) \cite{gwo}, Multiverse Optimization (MVO)\cite{mvo} and Cuckoo Search (CS) \cite{cs}. The experiment was set up on a 64-bit Machine with Ubuntu 20.04, Intel® CoreTM i5-7200U CPU @ 2.50GHz × 4, with a GeForce 940MX/PCle/SSE2 graphic card.
+
+Based on the results, DA provides ambitious results on the benchmark functions \cite{bf}. DA outperforms the other algorithms in F2, F8, F15, and F18. The selective performance boosts could be attributed to the optimal voting season. In certain cases, the top departments would have saturated and the replacement process might have been ineffective. As it is the case with any algorithm, the global optimum search can never be guaranteed. The critical point discussed in the previous section is Department C based on the experimental runs conducted. The results have been listed in Table $\ref{tab:2}$.
+
 \begin{table*}
+\scriptsize
 \caption{\textsc{Benchmark Results}}
 \label{tab:2}
 \centering
@@ -556,29 +455,18 @@ Alpine & F18 & $\prod_{i=1}^{n}\sqrt{x_i}sin(x_i)$ & Multi & [0,10] & 2.80 at $x
 }
 \end{table*}
 
-The plots for F1, F2, F3, F6, F15 and F17 have been shown in Figures $\ref{figur:1}$, $\ref{figur:2}$, $\ref{figur:3}$, $\ref{figur:4}$, $\ref{figur:5}$ and $\ref{figur:6}$. For these functions, the initial top department was capable of producing acceptable results. Due to the acceptance, the voting season never arrived and the process terminated. \\
-% 
-% \begin{figure}[!t]
-% \begin{subfigure}{.275\textwidth}
-%   \centering
-%   \includegraphics[width=.8\linewidth]{akleya.png}
-%   \caption{Ackley}
-%   \label{fig:sfig1}
-% \end{subfigure}%
-% \begin{subfigure}{.275\textwidth}
-%   \centering
-%   \includegraphics[width=.8\linewidth]{bartelsa.png}
-%   \caption{Bartels}
-%   \label{fig:sfig2}
-% \end{subfigure}
-% \caption{Departmant A Dominance}
-% \label{fig:fig}
-% \end{figure}
-% 
-The plots for F8, F10 and F18 have been shown in Figures $\ref{figur:7}$, $\ref{figur:8}$, $\ref{figur:9}$, $\ref{figur:10}$, $\ref{figur:11}$ and $\ref{figur:12}$. For these two functions, the initial top department was inapable of producing acceptable results. In the following voting season the total reward did not exceed $\lambda$ and hence B dominance started. 
+The plots for F1, F2, F3, F6, F15 and F17 have been shown in Figures $\ref{fig:figur:1}$, $\ref{fig:figur:2}$, $\ref{fig:figur:3}$, $\ref{fig:figur:4}$, $\ref{fig:figur:5}$ and $\ref{fig:figur:6}$. For these functions, the initial top department was capable of producing acceptable results. Due to the acceptance, the voting season never arrived and the process terminated. 
 
-The plots for F11 and F12 have been shown in Figures $\ref{figur:13}$, $\ref{figur:14}$, $\ref{figur:15}$, $\ref{figur:16}$, $\ref{figur:17}$ and $\ref{figur:18}$. For these two functions, both, the initial top department and the subsequent leaders, were incapable of producing acceptable results. Due to the acceptance, the top departments were voted out after two voting seasons. Department C is promoted and it performs better due to the improved structure and the experience accumulated by the previous top departments.\\
+
+The plots for F8, F10 and F18 have been shown in Figures $\ref{fig:figur:7}$, $\ref{fig:figur:8}$, $\ref{fig:figur:9}$, $\ref{fig:figur:10}$, $\ref{fig:figur:11}$ and $\ref{fig:figur:12}$. For these two functions, the initial top department was inapable of producing acceptable results. In the following voting season the total reward did not exceed $\lambda$ and hence B dominance started. 
+
+The plots for F11 and F12 have been shown in Figures $\ref{fig:figur:13}$, $\ref{fig:figur:14}$, $\ref{fig:figur:15}$, $\ref{fig:figur:16}$, $\ref{fig:figur:17}$ and $\ref{fig:figur:18}$. For these two functions, both, the initial top department and the subsequent leaders, were incapable of producing acceptable results. Due to the acceptance, the top departments were voted out after two voting seasons. Department C is promoted and it performs better due to the improved structure and the experience accumulated by the previous top departments.\\
 % 
+
+% The plots for F8, F10 and F18 have been shown in Figures $\ref{figur:7}$, $\ref{figur:8}$, $\ref{figur:9}$, $\ref{figur:10}$, $\ref{figur:11}$ and $\ref{figur:12}$. For these two functions, the initial top department was inapable of producing acceptable results. In the following voting season the total reward did not exceed $\lambda$ and hence B dominance started. 
+% 
+% The plots for F11 and F12 have been shown in Figures $\ref{figur:13}$, $\ref{figur:14}$, $\ref{figur:15}$, $\ref{figur:16}$, $\ref{figur:17}$ and $\ref{figur:18}$. For these two functions, both, the initial top department and the subsequent leaders, were incapable of producing acceptable results. Due to the acceptance, the top departments were voted out after two voting seasons. Department C is promoted and it performs better due to the improved structure and the experience accumulated by the previous top departments.\\
+% % 
 % \begin{figure}[!t]
 % \subfloat[Branin-A]{\includegraphics[width = 2in]{branina.png}} 
 % \subfloat[Branin-B]{\includegraphics[width = 1.9in]{braninb.png}}\\
@@ -620,49 +508,216 @@ The plots for F11 and F12 have been shown in Figures $\ref{figur:13}$, $\ref{fig
 % \label{fig:sfig8}
 % \end{figure}
 
-\begin{figure}[!t]
+\begin{figure}[htp]
+\begin{subfigure}{.275\textwidth}
   \centering
-  \label{figur}\caption{Department A Dominant}
-
-  \subfloat[Ackley]{\label{figur:1}\includegraphics[width=50mm]{ackley.png}}
-  \subfloat[Bohachevskyn]{\label{figur:2}\includegraphics[width=50mm]{boha.png}}
-  \\
-  \subfloat[Booth]{\label{figur:3}\includegraphics[width=50mm]{booth.png}}
-  \subfloat[Matyas]{\label{figur:4}\includegraphics[width=50mm]{matyas.png}}
-  \\
-  \subfloat[Schaffern]{\label{figur:5}\includegraphics[width=50mm]{schaffern.png}}
-  \subfloat[Happy Cat]{\label{figur:6}\includegraphics[width=43.5mm]{happycat.png}}
+  \includegraphics[width=.6\linewidth]{ackley.png}
+  \caption{Ackley}
+  \label{fig:figur:1}
+\end{subfigure}%
+\begin{subfigure}{.275\textwidth}
+  \centering
+  \includegraphics[width=.6\linewidth]{boha.png}
+  \caption{Bohachevskyn}
+  \label{fig:figur:2}
+\end{subfigure}
+\begin{subfigure}{.275\textwidth}
+  \centering
+  \includegraphics[width=.6\linewidth]{booth.png}
+  \caption{Booth}
+  \label{fig:figur:3}
+\end{subfigure}%
+\begin{subfigure}{.275\textwidth}
+  \centering
+  \includegraphics[width=.6\linewidth]{matyas.png}
+  \caption{Matyas}
+  \label{fig:figur:4}
+\end{subfigure}
+\begin{subfigure}{.275\textwidth}
+  \centering
+  \includegraphics[width=.6\linewidth]{schaffern.png}
+  \caption{Schaffern}
+  \label{fig:figur:5}
+\end{subfigure}%
+\begin{subfigure}{.275\textwidth}
+  \centering
+  \includegraphics[width=.6\linewidth]{happycat.png}
+  \caption{Happycat}
+  \label{fig:figur:6}
+\end{subfigure}
+\caption{Departmant A Dominance}
+% \label{fig:sfig6}
 \end{figure}
 
-\begin{figure}[!t]
-  \centering
-  \label{figur}\caption{Department B Dominant}
+% \begin{figure}[!t]
+%   \centering
+%   \label{figur}\caption{Department A Dominant}
+% 
+%   \subfloat[Ackley]{\label{figur:1}\includegraphics[width=50mm]{ackley.png}}
+%   \subfloat[Bohachevskyn]{\label{figur:2}\includegraphics[width=50mm]{boha.png}}
+%   \\
+%   \subfloat[Booth]{\label{figur:3}\includegraphics[width=50mm]{booth.png}}
+%   \subfloat[Matyas]{\label{figur:4}\includegraphics[width=50mm]{matyas.png}}
+%   \\
+%   \subfloat[Schaffern]{\label{figur:5}\includegraphics[width=50mm]{schaffern.png}}
+%   \subfloat[Happy Cat]{\label{figur:6}\includegraphics[width=43.5mm]{happycat.png}}
+% \end{figure}
 
-  \subfloat[Alpine-A]{\label{figur:7}\includegraphics[width=45mm]{alpinea.png}}
-  \subfloat[Alpine-B]{\label{figur:8}\includegraphics[width=45mm]{alpineb.png}}
-  \\
-  \subfloat[Qing-A]{\label{figur:9}\includegraphics[width=37mm]{qinga.png}}
-  \subfloat[Qing-B]{\label{figur:10}\includegraphics[width=37mm]{qingb.png}}
-  \\
-  \subfloat[Branin-A]{\label{figur:11}\includegraphics[width=45mm]{branina.png}}
-  \subfloat[Branin-B]{\label{figur:12}\includegraphics[width=45mm]{braninb.png}}
+\begin{figure}[!t]
+\begin{subfigure}{.275\textwidth}
+  \centering
+  \includegraphics[width=.6\linewidth]{alpinea.png}
+  \caption{Alpine-A}
+  \label{fig:figur:7}
+\end{subfigure}%
+\begin{subfigure}{.275\textwidth}
+  \centering
+  \includegraphics[width=.6\linewidth]{alpineb.png}
+  \caption{Alpine-B}
+  \label{fig:figur:8}
+\end{subfigure}
+\begin{subfigure}{.275\textwidth}
+  \centering
+  \includegraphics[width=.6\linewidth]{qinga.png}
+  \caption{Qing-A}
+  \label{fig:figur:9}
+\end{subfigure}%
+\begin{subfigure}{.275\textwidth}
+  \centering
+  \includegraphics[width=.6\linewidth]{qingb.png}
+  \caption{Qing-B}
+  \label{fig:figur:10}
+\end{subfigure}
+\begin{subfigure}{.275\textwidth}
+  \centering
+  \includegraphics[width=.6\linewidth]{branina.png}
+  \caption{Branin-A}
+  \label{fig:figur:11}
+\end{subfigure}%
+\begin{subfigure}{.275\textwidth}
+  \centering
+  \includegraphics[width=.6\linewidth]{braninb.png}
+  \caption{Branin-B}
+  \label{fig:figur:12}
+\end{subfigure}
+\caption{Departmant B Dominance}
+% \label{fig:sfig6}
 \end{figure}
 
-\begin{figure*}[!t]
+% \begin{figure}[!t]
+%   \centering
+%   \label{figur}\caption{Department B Dominant}
+% 
+%   \subfloat[Alpine-A]{\label{figur:7}\includegraphics[width=45mm]{alpinea.png}}
+%   \subfloat[Alpine-B]{\label{figur:8}\includegraphics[width=45mm]{alpineb.png}}
+%   \\
+%   \subfloat[Qing-A]{\label{figur:9}\includegraphics[width=37mm]{qinga.png}}
+%   \subfloat[Qing-B]{\label{figur:10}\includegraphics[width=37mm]{qingb.png}}
+%   \\
+%   \subfloat[Branin-A]{\label{figur:11}\includegraphics[width=45mm]{branina.png}}
+%   \subfloat[Branin-B]{\label{figur:12}\includegraphics[width=45mm]{braninb.png}}
+% \end{figure}
+
+% \begin{figure*}[!t]
+% \begin{subfigure}{.275\textwidth}
+%   \centering
+%   \includegraphics[width=0.14\paperwidth]{rastrigina.png}
+%   \caption{Rastrigin-A}
+%   \label{fig:figur:13}
+% \end{subfigure}%
+% \begin{subfigure}{.275\textwidth}
+%   \centering
+%   \includegraphics[width=0.14\paperwidth]{rastriginb.png}
+%   \caption{Rastrigin-B}
+%   \label{fig:figur:14}
+% \end{subfigure}
+% \begin{subfigure}{.275\textwidth}
+%   \centering
+%   \includegraphics[width=0.14\paperwidth]{rastriginc.png}
+%   \caption{Rastrigin-C}
+%   \label{fig:figur:15}
+% \end{subfigure}%
+% \begin{subfigure}{.275\textwidth}
+%   \centering
+%   \includegraphics[width=0.14\paperwidth]{rosenbrocka.png}
+%   \caption{Rosenbrock-A}
+%   \label{fig:figur:16}
+% \end{subfigure}
+% \begin{subfigure}{.275\textwidth}
+%   \centering
+%   \includegraphics[width=0.14\paperwidth]{rosenbrockb.png}
+%   \caption{Rosenbrock-B}
+%   \label{fig:figur:17}
+% \end{subfigure}%
+% \begin{subfigure}{.275\textwidth}
+%   \centering
+%   \includegraphics[width=0.14\paperwidth]{rosenbrockc.png}
+%   \caption{Rosenbrock-C}
+%   \label{fig:figur:18}
+% \end{subfigure}
+% \caption{Departmant C Dominance}
+% \label{fig:sfig6}
+% \end{figure*}
+
+\begin{figure}[!t]
+\begin{subfigure}{.275\textwidth}
   \centering
-  \label{figur}\caption{Department C Dominant}
+  \includegraphics[width=.6\linewidth]{rastrigina.png}
+  \caption{Rastrigin-A}
+  \label{fig:figur:13}
+\end{subfigure}%
+\begin{subfigure}{.275\textwidth}
+  \centering
+  \includegraphics[width=.6\linewidth]{rosenbrocka.png}
+  \caption{Rosenbrock-A}
+  \label{fig:figur:14}
+\end{subfigure}
+\begin{subfigure}{.275\textwidth}
+  \centering
+  \includegraphics[width=.6\linewidth]{rastriginb.png}
+  \caption{Rastrigin-B}
+  \label{fig:figur:15}
+\end{subfigure}%
+\begin{subfigure}{.275\textwidth}
+  \centering
+  \includegraphics[width=.6\linewidth]{rosenbrockb.png}
+  \caption{Rosenbrock-B}
+  \label{fig:figur:16}
+\end{subfigure}
+\begin{subfigure}{.275\textwidth}
+  \centering
+  \includegraphics[width=.6\linewidth]{rastriginc.png}
+  \caption{Rastrigin-C}
+  \label{fig:figur:17}
+\end{subfigure}%
+\begin{subfigure}{.275\textwidth}
+  \centering
+  \includegraphics[width=.6\linewidth]{rosenbrockc.png}
+  \caption{Rosenbrock-C}
+  \label{fig:figur:18}
+\end{subfigure}
+\caption{Departmant C Dominance}
+\label{fig:sfig6}
+\end{figure}
 
-  \subfloat[Alpine-A]{\label{figur:13}\includegraphics[width=45mm]{rastrigina.png}}
-  \subfloat[Alpine-B]{\label{figur:14}\includegraphics[width=45mm]{rastriginb.png}}
-  \subfloat[Alpine-B]{\label{figur:15}\includegraphics[width=45mm]{rastriginc.png}}
-  \\
-  \subfloat[Qing-A]{\label{figur:16}\includegraphics[width=45mm]{rosenbrocka.png}}
-  \subfloat[Qing-B]{\label{figur:17}\includegraphics[width=45mm]{rosenbrockb.png}}
-  \subfloat[Alpine-B]{\label{figur:18}\includegraphics[width=45mm]{rosenbrockc.png}}
-  \\
-\end{figure*}
 
-For any future extensions on this work, the follwing areas can be explored:
+% \begin{figure*}[!t]
+%   \centering
+%   \label{figur}\caption{Department C Dominant}
+% 
+%   \subfloat[Alpine-A]{\label{figur:13}\includegraphics[width=45mm]{rastrigina.png}}
+%   \subfloat[Alpine-B]{\label{figur:14}\includegraphics[width=45mm]{rastriginb.png}}
+%   \subfloat[Alpine-B]{\label{figur:15}\includegraphics[width=45mm]{rastriginc.png}}
+%   \\
+%   \subfloat[Qing-A]{\label{figur:16}\includegraphics[width=45mm]{rosenbrocka.png}}
+%   \subfloat[Qing-B]{\label{figur:17}\includegraphics[width=45mm]{rosenbrockb.png}}
+%   \subfloat[Alpine-B]{\label{figur:18}\includegraphics[width=45mm]{rosenbrockc.png}}
+%   \\
+% \end{figure*}
+
+\section{Conclusion and Future Work}
+
+In this paper, we present Democratic Algorithm (DA), a social-construct-based algorithm heavily inspired by hierarchical swarm intelligence and real-life social establishments. The results presented cement the competence of DA as it outperforms other algorithms in multiple unimodal and multimodal landscapes. For any future extensions on this work, the following areas can be explored:
 
 \begin{itemize}
 \item Improved updation rules for the coefficient vectors.
@@ -704,7 +759,7 @@ For any future extensions on this work, the follwing areas can be explored:
 
 \bibitem{man} K. F. Man, K. S. Tang and S. Kwong, "Genetic algorithms: concepts and applications [in engineering design]," in IEEE Transactions on Industrial Electronics, vol. 43, no. 5, pp. 519-534, Oct. 1996, doi: 10.1109/41.538609.
 
-\bibitem{abdul} W. Abdulal, O. A. Jadaan, A. Jabas, S. Ramachandram, M. Kaiiali and C. R. Rao, "Rank-Based Genetic Algorithm with Limited Iteration for Grid Scheduling," 2009 First International Conference on Computational Intelligence, Communication Systems and Networks, Indore, 2009, pp. 29-34, doi: 10.1109/CICSYN.2009.23.
+\bibitem{abdul} W. Abdulal, O. A. Jadaan, A. Jabas, S. Ramachandram, M. Kaiiali and C. R. Rao, "Rank-Based Genetic Algorithm with Limited Iteration for Grid Scheduling," 2009 First ICCICSN, Indore, 2009, pp. 29-34, doi: 10.1109/CICSYN.2009.23.
 
 \bibitem{kita} M. Takahashi and H. Kita, "A crossover operator using independent component analysis for real-coded genetic algorithms," Proceedings of the 2001 Congress on Evolutionary Computation (IEEE Cat. No.01TH8546), Seoul, South Korea, 2001, pp. 643-649 vol. 1, doi: 10.1109/CEC.2001.934452.
 
