@@ -9,6 +9,7 @@
 \usepackage{lipsum}
 \usepackage{algorithm}
 \usepackage{textcomp}
+\usepackage{amsthm}
 \usepackage{amsmath}
 \usepackage{amsmath,amsfonts}
 \usepackage{array,booktabs}
@@ -16,6 +17,7 @@
 \usepackage{subcaption}
 \usepackage{stackrel}
 \usepackage{breqn}
+\newtheorem{theorem}{Theorem}
 % \usepackage{isomath}
 \usepackage{mathtools}
 % http://ctan.org/pkg/amsmath
@@ -25,7 +27,7 @@
     T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
 \begin{document}
 
-\title{Democratic Algorithm: A Novel Approach to Hierarchical Swarm Intelligence\\
+\title{Democratic Algorithm (DA) : A Novel Approach to Hierarchical Swarm Intelligence\\
 % {\footnotesize \textsuperscript{*}Note: Sub-titles are not captured in Xplore and
 % should not be used}
 % \thanks{Identify applicable funding agency here. If none, delete this.}
@@ -71,7 +73,7 @@
 \maketitle
 
 \begin{abstract}
-Computational intelligence has produced nature inspired algorithms as the new and popular problem solving tool in multi-objective optimization problems. In this paper we present Democratic Algorithm (DA), a social-construct based algorithm heavily inspired from hierarchy swarm intelligence and real life social establishments. Each candidate in the swarm takes part in the search process and contends for the position of the leader. Additional enhancements such as dynamism and memory retention capabilities boost the performance of DA. A comprehensive study is conducted with 21 benchmark functions to act as proof-of-concept and lay the groundwork for future works. The results so obtained, cement the competence of DA as it outperforms other algorithms in multiple unimodal and multimodal functions.
+Computational intelligence has produced nature inspired algorithms as the new and popular problem solving tool in Multi-Objective Optimization Problems (MOOPs). In this paper we present Democratic Algorithm (DA), a social-construct based algorithm heavily inspired from hierarchical swarm intelligence and real life social establishments. Each candidate in the swarm takes part in the search process and contends for the position of the leader. Additional enhancements such as dynamism and memory retention capabilities boost the performance of DA. A comprehensive study is conducted with 18 benchmark functions to act as proof-of-concept and lay the groundwork for future works. The results so obtained, cement the competence of DA as it outperforms other algorithms in multiple unimodal and multimodal landscapes.
 % diverse fields such as soft computing, functional optimization, data science and machine learning. These algorithms can be further sub-divided, with swarm intelligence, physics-inspired, social, evolutionary algorithms a few noteworthy. In this paper we present Democratic Algorithm (DA) , a social-construct based algorithm heavily inspired from hierarchy swarm intelligence and real life social establishments. Our proposal extends the existing methodology for hierarchical structures by framing experience into a viable component for future applications. A comprehensive study is conducted with 16 benchmark functions and real-life data to cement the competence of the algorithm with DA providing a markup of 2-7.4X of convergence rate. 
 \end{abstract}
 
@@ -199,14 +201,14 @@ In this section, we provide a brief overview of methods to solve MOOPs and obtai
 {
 \begin{tabular}{| c | c | c | c |}
 \hline
-\textbf{Subclass} & \textbf{Optimization Equation} & \textbf{Advantages} & \textbf{Disdvantages}\\
+\textbf{Subclass} & \textbf{Optimization Equation} & \textbf{Advantages} & \textbf{Disvantages}\\
 \hline
  &&&\\
  Weighting Method \cite{arora} & $F\textsubscript{m}(x) =  \sum_{m=1}^{M}w\textsubscript{m}f\textsubscript{m}(x)$ & Simple, Intuitive & No constraints on weights, Not optimal for \\
  &&&nonconvex problems, Interactive\\
 \hline
 &&&\\
- $\epsilon$-Contrainst Method \cite{cooper}& $F\textsubscript{l}(x)$ w.r.t $F\textsubscript{m}(x) \leq \epsilon\textsubscript{m}$ & Ensures Pareto optimality and uniqueness,  & Not scalable, Range requirement,\\
+ $\epsilon$-Constraint Method \cite{cooper}& $F\textsubscript{l}(x)$ w.r.t $F\textsubscript{m}(x) \leq \epsilon\textsubscript{m}$ & Ensures Pareto optimality and uniqueness,  & Not scalable, Range requirement,\\
    &  & Convexity is not necessary & Interactive \\
  &&&\\
  \hline 
@@ -234,7 +236,7 @@ In this section, we provide a brief overview of methods to solve MOOPs and obtai
 {
 \begin{tabular}{| c | c | c |}
 \hline
-\textbf{Subclass}&\textbf{Advantages}&\textbf{Disadvantage}\\
+\textbf{Subclass}&\textbf{Advantages}&\textbf{Disadvantages}\\
 \hline
 Preference relation \cite{kim}&Dominant Pareto guarentee&Required reference point\\
 \hline
@@ -248,7 +250,7 @@ Biased Crowding&Desired trade-off&Crowding of solutions\\
 }
 \end{table*}
 
-A common drawback pattern encountered in the listed techniques is dominance factor. Light Beam method works towards being independent from this factor by leveraging a prior knowledge on the reference direction. Whereas Imprecision value function method takes in a ranking system, but created dominant solutions. 
+A common drawback pattern encountered in the listed techniques is dominance factor. Light Beam method works towards being independent from this factor by leveraging a prior knowledge on the reference direction. Whereas Imprecision value function method takes in a ranking system, but created dominant solutions. In this paper, we propose a solution to this conundrum deploying multiple candidates in a dynamically structured format into the solution landscape instead of a static master-follower format. As a result of the increased competition, the candidate solutions have added incentive to capture the top department. 
 
 % 
 % \subsection{Quantified problems in Classical Computation}
@@ -292,7 +294,8 @@ A common drawback pattern encountered in the listed techniques is dominance fact
 
 \section{Democratic Algorithm (DA)}
 
-In this section we present a novel social-construct based algorithm heavily inspired from swarm intelligence and real life social establishments which provides a solution to the conundrum presented in the previous section. DA deploys multiple candidates in a dynamically structured format into the solution landscape instead of a static master-follower format. The increased competition results in increased desire for current candidates to find the Pareto optimal. 
+In this section we present a novel social-construct based algorithm heavily inspired from swarm intelligence and real life social establishments. In order to find the global Pareto Optimal solution, each candidate aims to transcend to the next department with the help of the previous generations. 
+% which provides a solution to the conundrum presented in the previous section. DA deploys multiple candidates in a dynamically structured format into the solution landscape instead of a static master-follower format. The increased competition results in increased desire for current candidates to find the Pareto optimal. 
 
 \subsection{Inspiration}
 The term "Democracy" was coined in Athens, Greece and literally translates to "Strength of the People". The 2 main characteristics borrowed from the social ideology for this algorithm are as follows.
@@ -401,7 +404,40 @@ The entire process of the voting season is displayed in Algorithm $\ref{alg:da}$
 
 \subsection{Key points}
 
-From a mathematical point of view, both the structure and the search processes evolve over time with feedback. For each search, a lookup is conducted by candidate $\textit{c}$ in table $\textit{H}$. If not found, a solution $\textit{x\textsubscript{0}}$ is assumed as the initial point and the search of optimum solution $\textit{x\textsubscript{1}}$ begins. At the end of each expedition, the top department's performance is graded through a reward system. Based on the global performance overall a set runtime, either the department continues in power or gets replaced. Based on the representation, the following observations can be made:
+DA is a subset of Multi-Objective Evolutionary Algorithms and follows a similar convergence proof with slight modifications as proposed by G. Rudolph and A. Agapie \cite{conv}. He related the choice of evolutionary operations to the positiveness of a variation kernel. If the transition probability from a set of chromosomes to any solution is non-zero positive, then the transition process of the operations have a positive variation kernel. Extending this across with a homogeneous Markov chain having a positive transition matrix, it has been proven the all Pareto-optimal solutions will be the global solution in finite time with probability one. In order to prove the stochastic convergence, we first need to define a measure for the mapping.
+
+\begin{theorem}
+If $A$ and $B$ are subsets of a finite population set $X$ the $d(A,B)$ = $|A \cup B| - |A \cap B|$ is a metric on the power set of $X$
+\end{theorem}
+
+\begin{proof}\renewcommand{\qedsymbol}{}
+Let $X$ = $\{X\textsuperscript{1}, X\textsuperscript{2} \dots, X\textsuperscript{n} \}$ be the candidates and $a\textsubscript{i}$ and $b\textsubscript{i}$ be the candidate and solutino incidence vectors. \\
+\begin{align*}
+d(A,B) &= \sum_{i=1}^{n}(a\textsubscript{i} + b\textsubscript{i} - 2a\textsubscript{i}b\textsubscript{i})\\
+ &= \sum_{i=1}^{n}[(1-b\textsubscript{i})a\textsubscript{i} + (1-a\textsubscript{i})b\textsubscript{i}]\\
+ &= \sum_{i=1}^{n}|a\textsubscript{i} - b\textsubscript{i}| = ||a - b||\textsubscript{1}
+\end{align*}
+\end{proof}
+Therefore the Hamming Distance between the incidence vectors can act as a metric for mapping. A secondary measure utilized in the mapping is $\delta\textsubscript{B}(A)$ = $|A| - |A \cap B|$ which counts the number of candidates in set $A$ but not in set $B$. Stochastic convergence proof is discussed next. 
+
+\begin{theorem}
+Let $n\textsubscript{t}$ be the population of DA at time $t \geq 0$ and $F\textsubscript{t} = f(n\textsubscript{t})$ be the optimal mapping. DA is said to converge at probability 1 to the entire set if
+
+\begin{equation*}
+d(F\textsubscript{t}, M\textsuperscript{*}) \rightarrow 0,  t \rightarrow \infty
+\end{equation*}
+where convergence to set of minimal elements $\textit{M\textsuperscript{*}}$ occurs at probability 1 if 
+
+\begin{equation*}
+\delta\textsubscript{M\textsuperscript{*}}(F\textsubscript{t}) \rightarrow 0\\
+\end{equation*}
+with probability 1 as $\textit{t} \rightarrow \infty$
+\end{theorem}
+
+The implication of $d(F\textsubscript{t}, M\textsuperscript{*}) \rightarrow 0$ implies $\delta\textsubscript{M\textsuperscript{*}}(F\textsubscript{t}) \rightarrow 0$ extends to the worst case scenario of $n = M\textsuperscript{*}$. However, if a Markov Chain is maintained dynamically, $|M\textsuperscript{*}|=1$ and the limited population size will stagnate to a critical point. 
+% From a mathematical point of view, both the structure and the search processes evolve over time with feedback. For each search, a lookup is conducted by candidate $\textit{c}$ in table $\textit{H}$. If not found, a solution $\textit{x\textsubscript{0}}$ is assumed as the initial point and the search of optimum solution $\textit{x\textsubscript{1}}$ begins. At the end of each expedition, the top department's performance is graded through a reward system. Based on the global performance overall a set runtime, either the department continues in power or gets replaced.
+
+Based on the representation, the following observations can be made:
 \begin{itemize}
 \item The updation process occurs at an individual and at a departmental level to save the best solutions obtained so far
 \item The parameters $\vec{A}$ and $\vec{C}$ assist the solutions to have higher dimensionality
@@ -418,7 +454,7 @@ To sum up, DA starts with generating and evaluating a set of candidate solutions
 
 In this section the DA algorithm is benchmarked against 18 standard minimization functions. These functions are described in Table $\ref{tab:1}$. The DA was iterated 20 times on each of these functions and the results were compared against other popular SI algorithms such as Particle Swarm Optimization (PSO) \cite{pso}, Grey Wolf Optimization (GWO) \cite{gwo}, Multiverse Optimization (MVO)\cite{mvo} and Cuckoo Search (CS) \cite{cs}. The metric based results such as mean and standard deviation is listed in Table $\ref{tab:2}$. The experiment was set up on a 64-bit Machine with Ubuntu 20.04, Intel® CoreTM i5-7200U CPU @ 2.50GHz × 4, with a GeForce 940MX/PCle/SSE2 graphic card.
 
-Based on the results, DA provides ambitious results on the becnhmark functions \cite{bf}. DA outperforms the other algorithms in F2, F8, F15 and F18. The selective performance boosts could be attributed to the optimal voting season. In certain cases the top departments would have saturated and the replacement process might have been ineffective. As it is the case with any algorithm, global optimum search can never be guarenteed.  
+Based on the results, DA provides ambitious results on the becnhmark functions \cite{bf}. DA outperforms the other algorithms in F2, F8, F15 and F18. The selective performance boosts could be attributed to the optimal voting season. In certain cases the top departments would have saturated and the replacement process might have been ineffective. As it is the case with any algorithm, global optimum search can never be guarenteed. The critical point discussed in the previous section is Department C based on the experimental runs conducted. 
 
 
 \begin{table*}
@@ -626,6 +662,8 @@ For any future extensions on this work, the follwing areas can be explored:
 \bibitem{an} S. An, S. Yang and Z. Ren, "Incorporating Light Beam Search in a Vector Normal Boundary Intersection Method for Linear Antenna Array Optimization," in IEEE Transactions on Magnetics, vol. 53, no. 6, pp. 1-4, June 2017, Art no. 7001304, doi: 10.1109/TMAG.2017.2664077.
 
 \bibitem{lim} P. Limbourg and D. E. S. Aponte, "An optimization algorithm for imprecise multi-objective problem functions," 2005 IEEE Congress on Evolutionary Computation, Edinburgh, Scotland, 2005, pp. 459-466 Vol.1, doi: 10.1109/CEC.2005.1554719.
+
+\bibitem{conv} G. Rudolph and A. Agapie, "Convergence properties of some multi-objective evolutionary algorithms," Proceedings of the 2000 Congress on Evolutionary Computation. CEC00 (Cat. No.00TH8512), La Jolla, CA, USA, 2000, pp. 1010-1016 vol.2, doi: 10.1109/CEC.2000.870756.
 
 \bibitem{arnold} D. V. Arnold and R. Salomon, "Evolutionary Gradient Search Revisited," in IEEE Transactions on Evolutionary Computation, vol. 11, no. 4, pp. 480-495, Aug. 2007, doi: 10.1109/TEVC.2006.882427.
 
