@@ -411,7 +411,7 @@ If $A$ and $B$ are subsets of a finite population set $X$ the $d(A,B)$ = $|A \cu
 \end{theorem}
 
 \begin{proof}\renewcommand{\qedsymbol}{}
-Let $X$ = $\{X\textsuperscript{1}, X\textsuperscript{2} \dots, X\textsuperscript{n} \}$ be the candidates and $a\textsubscript{i}$ and $b\textsubscript{i}$ be the candidate and solutino incidence vectors. \\
+Let $X$ = $\{X\textsuperscript{1}, X\textsuperscript{2} \dots, X\textsuperscript{n} \}$ be the candidates and $a\textsubscript{i}$ and $b\textsubscript{i}$ be the candidate and solution incidence vectors. \\
 \begin{align*}
 d(A,B) &= \sum_{i=1}^{n}(a\textsubscript{i} + b\textsubscript{i} - 2a\textsubscript{i}b\textsubscript{i})\\
  &= \sum_{i=1}^{n}[(1-b\textsubscript{i})a\textsubscript{i} + (1-a\textsubscript{i})b\textsubscript{i}]\\
@@ -434,7 +434,38 @@ where convergence to set of minimal elements $\textit{M\textsuperscript{*}}$ occ
 with probability 1 as $\textit{t} \rightarrow \infty$
 \end{theorem}
 
-The implication of $d(F\textsubscript{t}, M\textsuperscript{*}) \rightarrow 0$ implies $\delta\textsubscript{M\textsuperscript{*}}(F\textsubscript{t}) \rightarrow 0$ extends to the worst case scenario of $n = M\textsuperscript{*}$. However, if a Markov Chain is maintained dynamically, $|M\textsuperscript{*}|=1$ and the limited population size will stagnate to a critical point. 
+The implication of $d(F\textsubscript{t}, M\textsuperscript{*}) \rightarrow 0$ implies $\delta\textsubscript{M\textsuperscript{*}}(F\textsubscript{t}) \rightarrow 0$ extends to the worst case scenario of $n = M\textsuperscript{*}$. However, if a Markov Chain is maintained dynamically, $|M\textsuperscript{*}|=1$ and the limited population size will converge to a critical point. The rate of convergence is another important piece in this discussion. 
+
+\begin{theorem}
+Let $n\textsubscript{i,t}$, $F$, $GM$ and $\lambda$ be the population of the $i\textsuperscript{th}$ department of DA at time $t$, fitness function, rate of cross-over-mutation and threshold for the memory element respectively. The rate of population progression from department $i$ to $j$ for a given problem can be expressed as
+
+\begin{equation*}
+\frac{d(Population\textsubscript{i $\rightarrow$ j})}{dt} \propto f(n\textsubscript{i,t}, \frac{1}{F}, GM, \lambda)
+\end{equation*}
+\end{theorem}
+
+\begin{proof}\renewcommand{\qedsymbol}{}
+
+Consider $n\textsubscript{i,t}$ and $F$ as a combined quantity $Q(i,j,t)$. The distribution of $Q(i,j,t)$ will be binomial as the peak is achived with maximum population and highest fitness score. The probability of candidate $c$ at department $i$ to continue into department $j$ at time $t+1$ will be given by
+
+\begin{equation*}
+P(j|i,t+1) =  {n\textsubscript{$i$,$t$} \choose n\textsubscript{$i$,$t$}} GM\textsuperscript{$n\textsubscript{$i$,$t$}$}
+\end{equation*}
+
+Based on this distribution, diffusion equations with initial state $p$, relative frequency of candidate selection till current department $\mu$ and selection strength $s$ can be written as:
+
+\begin{equation*}
+\frac{\partial \mu(p,t)}{\partial t} = \frac{p(1-p)}{2}\frac{\partial^2 \mu(p,t)}{\partial^2 p} + sp(1-p)\frac{\partial mu(p,t)}{\partial mu}
+\end{equation*}
+
+Fixing this probability when $t$ $\rightarrow$ $\infty$ as
+
+\begin{equation*}
+u(p) = \lim_{t \rightarrow \infty} {\partial(p,t)}
+\end{equation*}
+
+We get the rate of transition of a candidate as a function of the proficiency over time $t$, $u(p)\textsuperscript{$t$}$.
+\end{proof}
 % From a mathematical point of view, both the structure and the search processes evolve over time with feedback. For each search, a lookup is conducted by candidate $\textit{c}$ in table $\textit{H}$. If not found, a solution $\textit{x\textsubscript{0}}$ is assumed as the initial point and the search of optimum solution $\textit{x\textsubscript{1}}$ begins. At the end of each expedition, the top department's performance is graded through a reward system. Based on the global performance overall a set runtime, either the department continues in power or gets replaced.
 
 Based on the representation, the following observations can be made:
